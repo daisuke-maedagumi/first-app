@@ -4,6 +4,7 @@ const Member1 = () => {
   return (
     <div>
       <p>Member1</p>
+      <p>こんにちは</p>
     </div>
   )
 }
