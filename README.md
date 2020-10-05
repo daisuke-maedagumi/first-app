@@ -73,4 +73,4 @@ First Commit by nakashima
 
 やー！
 
-test/kyohei
+testkyohei
