@@ -7,6 +7,7 @@ import Member2 from './Templates/Member2';
 import Member3 from './Templates/Member3';
 import Member4 from './Templates/Member4';
 import Home from './Templates/Home';
+
 function App() {
   return (
     <div className="App">
