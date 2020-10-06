@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TemporaryDrawer from './TemporaryDrawer'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 const useStyles = makeStyles((theme) => ({
   menuIcon: {
@@ -29,9 +30,30 @@ const useStyles = makeStyles((theme) => ({
   BarColor: {
     marginRight: theme.spacing(2),
     backgroundColor: 'gray',
-    display: 'flex'
+    display: 'flex',
+    
+    
+  },
+  wrap: {
+    width: '2000px'
   }
 }))
+
+function ElevationScroll(props) {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
+
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+  });
+}
 
 const Navber = (props) => {
   const classes = useStyles()
@@ -44,8 +66,9 @@ const Navber = (props) => {
     setOpen(!open)
   },[setOpen, open])
   return (
-    <div>
-      <AppBar className={classes.BarColor} position="static">
+    <div className={classes.wrap}>
+      <ElevationScroll {...props}>
+      <AppBar className={classes.BarColor} position='static'>
         <ToolBar >
           <IconButton edge="start" className={classes.menuIcon} onClick={(event) => handleDrawerToglge(event)}>
             <MenuIcon className={classes.icon}/>
@@ -55,6 +78,7 @@ const Navber = (props) => {
           </Typography>
         </ToolBar>
       </AppBar>
+      </ElevationScroll>
       <TemporaryDrawer open={open} onClose={handleDrawerToglge}/>
     </div>
     
