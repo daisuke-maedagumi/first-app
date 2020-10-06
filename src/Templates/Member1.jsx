@@ -6,7 +6,7 @@ const Member1 = () => {
   return (
     <div>
       <p>大翼</p>
-      <Button variant="contained">Default</Button>
+      <Button variant="contained"　color="primary">Default</Button>
     </div>
   )
 }
