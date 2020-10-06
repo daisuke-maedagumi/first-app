@@ -26,13 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 20,
     marginTop: 30,
   },
-  hoge: {
-    padding: theme.spacing(3),
-    margin: 'auto',
-    maxWidth: 500,
-    marginBottom: 20,
-    marginTop: 30,
-  },
+
   image: {
     width: 128,
     height: 128,
@@ -76,45 +70,58 @@ export default function Member3()
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  自己紹介
+                  <Grid container alignItems="stretch" justify="space-between" direction="row">
+                    <h1>
+                      自己紹介
+                    </h1>
+                  </Grid>
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                  名前：山本恭平（やまもときょうへい）
+                  <Grid container alignItems="flex-start" justify="space-between" direction="row">
+                    <li>名前:山本恭平（やまもときょうへい）</li>
+                  </Grid>
+                  <Grid container alignItems="stretch" justify="space-between" direction="row">
+                    <li>
+                      年齢:24
+                    </li>
+                  </Grid>
+                  <Grid container alignItems="stretch" justify="space-between" direction="row">
+                    <li>
+                      出身地:福岡県北九州市
+                     </li>
+                  </Grid>
                 </Typography>
-                <Box display="flex" justifyContent="center" m={1} p={1} bgcolor="background.paper">
-                <Box p={1} >
-                    <ListItem component="a" href="https://github.com/KyoheiYamamoto">
-                      <GitHubIcon /><ListItemText primary="Github" />
-                    </ListItem>
-                </Box>
-                <Box p={1} >
-                    <ListItem component="a" href="https://twitter.com/davidkyohei">
-                      <TwitterIcon /><ListItemText primary="Twitter" />
-                    </ListItem>
-                  </Box>
-                  <Box p={1} >
-                    <ListItem component="a" href="https://www.instagram.com/kyohei_1642">
-                      <InstagramIcon /><ListItemText primary="Instagram" />
-                    </ListItem>
-                  </Box>
-              </Box>
 
-                <Grid item>
-                  <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                    <li>出身地：福岡県北九州市</li>
-                  </Typography>
-                </Grid>
               </Grid>
               <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  hogehogehoge
-                </Typography>
+                <Grid container alignItems="flex-start" justify="space-between" direction="row">
+                  <h2>経歴</h2>
+                </Grid>
               </Grid>
+              <Grid container alignItems="flex-start" justify="space-between" direction="row">
+                <h2>リンク先</h2>
+              </Grid>
+              <Box display="flex" justifyContent="stretch" alignItems="stretch" justify="space-between" direction="row">
+                <Box p={3} >
+                  <ListItem component="a" href="https://github.com/KyoheiYamamoto" >
+                    <GitHubIcon /><ListItemText primary="Github" />
+                  </ListItem>
+                </Box>
+                <Box p={3} >
+                  <ListItem component="a" href="https://twitter.com/davidkyohei">
+                    <TwitterIcon /><ListItemText primary="Twitter" />
+                  </ListItem>
+                </Box>
+                <Box p={3} >
+                  <ListItem component="a" href="https://www.instagram.com/kyohei_1642">
+                    <InstagramIcon /><ListItemText primary="Instagram" />
+                  </ListItem>
+                </Box>
+              </Box>
             </Grid>
           </Grid>
         </Grid>
       </Paper>
-
     </div >
   );
 }
