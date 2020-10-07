@@ -1,5 +1,5 @@
 import React from 'react'
-import '/Users/ninomiya/react_project/firstapp/src/assets/style.css'
+import '../assets/styles/style.css'
 import { makeStyles } from '@material-ui/core/styles'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import Link from '@material-ui/core/Link'
