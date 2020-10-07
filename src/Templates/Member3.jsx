@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    margin: 'auto',
+    margin: "auto",
     maxWidth: 700,
     maxHeight: 1000,
     marginBottom: 20,
@@ -32,23 +32,23 @@ const useStyles = makeStyles((theme) => ({
     height: 128,
   },
   linkName: {
-    textDecoration: 'none',
-    fontSize: '18px',
-    color: 'orange'
+    textDecoration: "none",
+    fontSize: "18px",
+    color: "orange",
   },
   img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
+    margin: "auto",
+    display: "block",
+    maxWidth: "100%",
+    maxHeight: "100%",
   },
-  Url: {
+  hugehoge: {
+    alignItems: "stretch",
+    justify: "space-between",
+    direction: "row",
     display: "flex",
-    flexWrap: "nowrap",
-    float: "left",
-    overflow: "hidden",
-  }
-
+    justifyContent: "stretch",
+  },
 }));
 
 export default function Member3()
@@ -57,71 +57,89 @@ export default function Member3()
 
 
   return (
-    <div className={classes.root.hoge}>
-
+    <div className={classes.root.hugehoge}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
+              <img
+                className={classes.img}
+                alt="complex"
+                src="/static/images/grid/complex.jpg"
+              />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  <Grid container alignItems="stretch" justify="space-between" direction="row">
-                    <h1>
-                      自己紹介
-                    </h1>
+                  <Grid container className="hugehoge">
+                    <h1>自己紹介</h1>
+                  </Grid>
+                  <Grid container className="hugehoge">
+                    <p>名前：山本恭平（やまもときょうへい）</p>
+                  </Grid>
+                  <Grid container className="hugehoge">
+                    <p>出身地：福岡県北九州市</p>
+                  </Grid>
+                  <Grid container className="hugehoge">
+                    <p>年齢：24</p>
+                  </Grid>
+                  <Grid container className="hugehoge">
+                    <p>学歴：福岡工業大学卒業</p>
                   </Grid>
                 </Typography>
-                <Typography variant="body1" gutterBottom>
-                  <Grid container alignItems="flex-start" justify="space-between" direction="row">
-                    <li>名前:山本恭平（やまもときょうへい）</li>
-                  </Grid>
-                  <Grid container alignItems="stretch" justify="space-between" direction="row">
-                    <li>
-                      年齢:24
-                    </li>
-                  </Grid>
-                  <Grid container alignItems="stretch" justify="space-between" direction="row">
-                    <li>
-                      出身地:福岡県北九州市
-                     </li>
-                  </Grid>
-                </Typography>
-
               </Grid>
               <Grid item>
-                <Grid container alignItems="flex-start" justify="space-between" direction="row">
-                  <h2>経歴</h2>
+                <Grid container className="hugehoge">
+                  <h2>資格</h2>
                 </Grid>
               </Grid>
-              <Grid container alignItems="flex-start" justify="space-between" direction="row">
+              <Grid container className="hugehoge">
+                <li>MOSWord2013</li>
+              </Grid>
+              <br/>
+              <Grid container className="hugehoge">
+                <li>MOSExcel2013</li>
+              </Grid>
+              <Grid item>
+                <Grid container className="hugehoge">
+                  <h2>紹介文</h2>
+                </Grid>
+                <Grid container className="hugehoge">
+                  長い文章を書く予定
+                </Grid>
+              </Grid>
+              <br />
+              <Grid container className="hugehoge">
                 <h2>リンク先</h2>
               </Grid>
-              <Box display="flex" justifyContent="stretch" alignItems="stretch" justify="space-between" direction="row">
-                <Box p={3} >
-                  <ListItem component="a" href="https://github.com/KyoheiYamamoto" >
-                    <GitHubIcon /><ListItemText primary="Github" />
+              <Grid container className="hugehoge">
+                <Box display="flex" justifyContent="stretch" className="hugehoge" >
+                  <ListItem
+                    component="a"
+                    href="https://github.com/KyoheiYamamoto">
+                    <GitHubIcon />
+                    <ListItemText primary="Github" />
+                  </ListItem>
+                  <ListItem
+                    component="a"
+                    href="https://twitter.com/davidkyohei" >
+                    <TwitterIcon />
+                    <ListItemText primary="Twitter" />
+                  </ListItem>
+                  <ListItem
+                    component="a"
+                    href="https://www.instagram.com/kyohei_1642" >
+                    <InstagramIcon />
+                    <ListItemText primary="Instagram" />
                   </ListItem>
                 </Box>
-                <Box p={3} >
-                  <ListItem component="a" href="https://twitter.com/davidkyohei">
-                    <TwitterIcon /><ListItemText primary="Twitter" />
-                  </ListItem>
-                </Box>
-                <Box p={3} >
-                  <ListItem component="a" href="https://www.instagram.com/kyohei_1642">
-                    <InstagramIcon /><ListItemText primary="Instagram" />
-                  </ListItem>
-                </Box>
-              </Box>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Paper>
-    </div >
+    </div>
   );
 }
