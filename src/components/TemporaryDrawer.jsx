@@ -9,6 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import {makeStyles} from '@material-ui/styles'
 import HomeIcon from '@material-ui/icons/Home';
 import PersonPinTwoToneIcon from '@material-ui/icons/PersonPinTwoTone';
+import {useDispatch} from 'react-redux'
+import {push} from 'connected-react-router'
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -30,6 +32,20 @@ const useStyles = makeStyles((theme) => ({
 const TemporaryDrawer = (props) => {
   const classes = useStyles()
   const {container} = props
+  const dispatch = useDispatch()
+
+  const selectMenu = (event, path) => {
+    dispatch(push(path))
+    props.onClose(event)
+  }
+  
+  const menus = [
+    {func: selectMenu,label: "Home", icon: <HomeIcon/>, id: "home", value: "/"},
+    {func: selectMenu,label: "Member1", icon: <PersonPinTwoToneIcon/>, id: "Member1", value: "/Member1"},
+    {func: selectMenu,label: "Member2", icon: <PersonPinTwoToneIcon/>, id: "Member2", value: "/Member2"},
+    {func: selectMenu,label: "Member3", icon: <PersonPinTwoToneIcon/>, id: "Member3", value: "/Member3"},
+    {func: selectMenu,label: "Member4", icon: <PersonPinTwoToneIcon/>, id: "Member4", value: "/Member4"}
+  ]
   return (
     <nav className={classes.drawer}>
       <Drawer
@@ -43,46 +59,14 @@ const TemporaryDrawer = (props) => {
       >
         <div>
           <List>
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon/>
-              </ListItemIcon>
-              <ListItemText>
-                <Link to="/" className={classes.linkName}>Home</Link>
-              </ListItemText>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <PersonPinTwoToneIcon/>
-              </ListItemIcon>
-              <ListItemText>
-                <Link to="/Member1" className={classes.linkName}>Member1</Link>
-              </ListItemText>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <PersonPinTwoToneIcon/>
-              </ListItemIcon>
-              <ListItemText>
-                <Link to="/Member2" className={classes.linkName}>Member2</Link>
-              </ListItemText>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <PersonPinTwoToneIcon/>
-              </ListItemIcon>
-              <ListItemText>
-                <Link to="/Member3" className={classes.linkName}>Member3</Link>
-              </ListItemText>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <PersonPinTwoToneIcon/>
-              </ListItemIcon>
-              <ListItemText>
-                <Link to="/Member4" className={classes.linkName}>Member4</Link>
-              </ListItemText>
-            </ListItem>
+            {menus.map(menu => (
+              <ListItem button key={menu.id} onClick={(e) => menu.func(e, menu.value)}>
+                <ListItemIcon>
+                  {menu.icon}
+                </ListItemIcon>
+                <ListItemText className={classes.linkName} primary={menu.label}/>
+              </ListItem>
+            ))}
           </List>
           <Divider/>
         </div>
