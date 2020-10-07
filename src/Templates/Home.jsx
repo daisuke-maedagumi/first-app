@@ -6,9 +6,11 @@ import TopImage from '../assets/images/maedagumi5.jpg'
 const useStyles = makeStyles({
   images: {
     maxHeight: '760px',
+    width: "100%"
   },
   root: {
-    overflow: 'scroll'
+    width: "100%",
+    height: "100%"
   }
 })
 

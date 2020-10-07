@@ -66,7 +66,7 @@ const Navber = (props) => {
     setOpen(!open)
   },[setOpen, open])
   return (
-    <div className={classes.wrap}>
+    <div >
       <ElevationScroll {...props}>
       <AppBar className={classes.BarColor} position='static'>
         <ToolBar >
