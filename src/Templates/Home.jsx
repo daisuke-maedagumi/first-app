@@ -3,14 +3,16 @@ import {makeStyles} from '@material-ui/styles'
 import TopImage from '../assets/images/maedagumi5.jpg'
 
 
+
 const useStyles = makeStyles({
   images: {
-    maxHeight: '760px',
-    width: "100%"
-  },
-  root: {
+    height: '800px',
     width: "100%",
-    height: "100%"
+  },
+  sections: {
+    width: "100%",
+    height: "100%",
+    marginTop: '30px'
   }
 })
 
@@ -18,8 +20,8 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles()
   return (
-    <div className={classes.root}>
-      <section >
+    <div>
+      <section className={classes.sections}>
         <img src={TopImage} alt='' className={classes.images}/>
       </section>
     </div>

@@ -1,14 +1,28 @@
 import React from 'react';
 import Router from './Router.jsx'
-import './App.css';
-import Navber from './components/Navber'
+import Navber from './components/Navber.jsx'
+import {makeStyles} from '@material-ui/styles'
+
+const useStyles = makeStyles({
+  nav: {
+    position: 'fixed',
+    top: 0
+  },
+  sections: {
+    overflow: 'scroll'
+  }
+})
+
+
+
 
 
 function App() {
+  const classes = useStyles()
   return (
-    <div className="App">
-      <Navber />
-      <Router/>
+    <div>
+      <Navber className={classes.nav}/>
+      <Router className={classes.sections}/>
     </div>
   );
 }
