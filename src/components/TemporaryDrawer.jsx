@@ -10,6 +10,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import PersonPinTwoToneIcon from '@material-ui/icons/PersonPinTwoTone';
 import {useDispatch} from 'react-redux'
 import {push} from 'connected-react-router'
+import CreateIcon from '@material-ui/icons/Create';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -23,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: 256
+  },
+  linkTitle: {
+    textAlign: 'center'
+  },
+  menus: {
+    marginLeft: '30px'
   }
 }))
 
@@ -44,6 +51,16 @@ const TemporaryDrawer = (props) => {
     {func: selectMenu,label: "Member3", icon: <PersonPinTwoToneIcon/>, id: "Member3", value: "/Member3"},
     {func: selectMenu,label: "Member4", icon: <PersonPinTwoToneIcon/>, id: "Member4", value: "/Member4"}
   ]
+
+  const selectContents = (event, path) => {
+    dispatch(push(path))
+    props.onClose(event)
+  }
+
+  const contents = [
+    {func: selectContents,label: "Blog", icon: <CreateIcon/>, id: "Blog", value: "/blog"}
+  ]
+
   return (
     <nav className={classes.drawer}>
       <Drawer
@@ -57,8 +74,9 @@ const TemporaryDrawer = (props) => {
       >
         <div>
           <List>
+            <h2 className={classes.linkTitle}>Member’s History</h2>
             {menus.map(menu => (
-              <ListItem button key={menu.id} onClick={(e) => menu.func(e, menu.value)}>
+              <ListItem className={classes.menus} button key={menu.id} onClick={(e) => menu.func(e, menu.value)}>
                 <ListItemIcon>
                   {menu.icon}
                 </ListItemIcon>
@@ -67,6 +85,17 @@ const TemporaryDrawer = (props) => {
             ))}
           </List>
           <Divider/>
+          <List>
+            <h2 className={classes.linkTitle}>Contents</h2>
+            {contents.map(content => (
+              <ListItem className={classes.menus} button key={content.id} onClick={(e) => content.func(e, content.value)}>
+                <ListItemIcon>
+                  {content.icon}
+                </ListItemIcon>
+                <ListItemText className={classes.linkName} primary={content.label}/>
+              </ListItem>
+            ))}
+          </List>
         </div>
       </Drawer>
     </nav>

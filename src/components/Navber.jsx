@@ -5,10 +5,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import TemporaryDrawer from './TemporaryDrawer'
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import {Link} from 'react-router-dom'
 import ContactSupportOutlinedIcon from '@material-ui/icons/ContactSupportOutlined';
 import TransitionsModal from './ChatBotModal'
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import MailModal from './MailModal'
 
 const useStyles = makeStyles((theme) => ({
   menuIcon: {
@@ -45,6 +47,7 @@ const Navber = (props) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false);
+  const [mailOpen, setMailOpen] = useState(false)
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -53,6 +56,15 @@ const Navber = (props) => {
   const handleModalClose = () => {
     setModalOpen(false);
   };
+
+  const handleMailOpen = () => {
+    setMailOpen(true)
+  }
+
+  const handleMailClose = () => {
+    setMailOpen(false)
+  }
+
 
   const handleDrawerToglge = useCallback((event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -64,19 +76,23 @@ const Navber = (props) => {
     <div className={classes.root}>
       <AppBar className={classes.BarColor} >
         <ToolBar >
-          <IconButton edge="start" className={classes.menuIcon} onClick={(event) => handleDrawerToglge(event)}>
-            <MenuIcon className={classes.icon}/>
-          </IconButton>
           <Typography className={classes.linkTitle}>
             <Link to='/' className={classes.linkName} >Team Engineers</Link>
           </Typography>
+          <IconButton edge="start" className={classes.menuIcon} onClick={(event) => handleDrawerToglge(event)}>
+            <MenuBookIcon className={classes.icon}/>
+          </IconButton>
           <IconButton className={classes.menuIcon} onClick={handleModalOpen}>
             <ContactSupportOutlinedIcon className={classes.icon} />
+          </IconButton>
+          <IconButton className={classes.menuIcon} onClick={handleMailOpen}>
+            <MailOutlineIcon className={classes.icon}/>
           </IconButton>
         </ToolBar>
       </AppBar>
       <TemporaryDrawer open={open} onClose={handleDrawerToglge}/>
       <TransitionsModal modalOpen={modalOpen} handleModalClose={handleModalClose}/>
+      <MailModal mailOpen={mailOpen} handleMailClose={handleMailClose}/>
     </div>
     
   )
