@@ -1,5 +1,5 @@
 import React from 'react'
-// import 'firstapp/src/assets/styles/style.css'
+import '/Users/ninomiya/react_project/firstapp/src/assets/styles/style.css'
 import { makeStyles } from '@material-ui/core/styles'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import Link from '@material-ui/core/Link'
@@ -18,7 +18,9 @@ const useStyles = makeStyles((theme) => ({
   },
   myName: {
     fontFamily: "Roboto Slab, Times New Roman, serif"
+
   }
+  
 }));
 
 
@@ -26,7 +28,7 @@ const Profile = () => {
   const classes = useStyles();
   return (
     <div className="profile">
-      <h1 className={classes.myName}>NINOMIYA DAISUKE</h1>
+      <h1 className="test">NINOMIYA DAISUKE</h1>
       <div>
         <Link href="https://github.com/daisuke-maedagumi" target="_blank">
           <GitHubIcon style={{ fontSize: 20, color: "lightgray", marginRight: 20 }} />
