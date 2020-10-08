@@ -4,10 +4,17 @@ import TopImage from '../assets/images/maedagumi5.jpg'
 
 
 
+
 const useStyles = makeStyles({
-  images: {
-    height: '800px',
+  root: {
+    height: '100%',
     width: "100%",
+    
+  },
+  images: {
+    height: '100%',
+    width: "100%",
+    paddingTop: '24px'
   },
   sections: {
     width: "100%",
