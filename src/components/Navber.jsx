@@ -6,6 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import TemporaryDrawer from './TemporaryDrawer'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import {Link} from 'react-router-dom'
+import ContactSupportOutlinedIcon from '@material-ui/icons/ContactSupportOutlined';
+import TransitionsModal from './ChatBotModal'
 
 const useStyles = makeStyles((theme) => ({
   menuIcon: {
@@ -27,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold'
   },
   BarColor: {
-    // marginRight: theme.spacing(2),
     backgroundColor: 'gray',
     display: 'flex',
     width: '100%'
   },
   root: {
-    width: '100vw'
+    width: '100vw',
+    flexGrow: 1,
   }
 }))
 
@@ -41,6 +44,15 @@ const useStyles = makeStyles((theme) => ({
 const Navber = (props) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   const handleDrawerToglge = useCallback((event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -56,11 +68,15 @@ const Navber = (props) => {
             <MenuIcon className={classes.icon}/>
           </IconButton>
           <Typography className={classes.linkTitle}>
-            <p className={classes.linkName} >Team Engineers</p>
+            <Link to='/' className={classes.linkName} >Team Engineers</Link>
           </Typography>
+          <IconButton className={classes.menuIcon} onClick={handleModalOpen}>
+            <ContactSupportOutlinedIcon className={classes.icon} />
+          </IconButton>
         </ToolBar>
       </AppBar>
       <TemporaryDrawer open={open} onClose={handleDrawerToglge}/>
+      <TransitionsModal modalOpen={modalOpen} handleModalClose={handleModalClose}/>
     </div>
     
   )
