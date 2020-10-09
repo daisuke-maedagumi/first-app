@@ -69,8 +69,8 @@ export default function Member3()
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
+              <Grid item xs>                
+                <Typography gutterBottom variant="subtitle1" >
                   <Grid container className="hugehoge">
                     <h2>自己紹介</h2>
                   </Grid>
@@ -104,7 +104,7 @@ export default function Member3()
                 <Grid container className="hugehoge">
                   <h2>紹介文</h2>
                 </Grid>
-                <Grid container className="hugehoge" direction="row">
+                <Grid container className="hugehoge"  direction="row">
                   <p>
                     2019年3月大学を卒業（情報システム工学を専攻していました）
                     学生時代にTABIPPOという団体で旅を広める活動や教育支援団体で教育支援などを行ってきました
