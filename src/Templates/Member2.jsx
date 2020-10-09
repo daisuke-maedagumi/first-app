@@ -4,12 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItem from '@material-ui/core/ListItem'
-// import List from '@material-ui/core/List'
 import GitHubIcon from '@material-ui/icons/GitHub';
-import InstagramIcon from '@material-ui/icons/Instagram';
 import TopImage from "../assets/images/os.jpg";
 
 import Box from '@material-ui/core/Box';
@@ -75,7 +72,7 @@ export default function Member2()
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" marginTop="100">
+                <Typography gutterBottom variant="subtitle1">
                   <Grid container className="hugehoge">
                     <h2>自己紹介</h2>
                   </Grid>
@@ -101,7 +98,7 @@ export default function Member2()
                 {/* <Box display="flex" flexDirection="row" p={1} m={1} bgcolor="background.paper">
                 </Box> */}
 
-                <Grid container className="hugehoge" xs="true" direction="row">
+                <Grid container className="hugehoge"  direction="row">
                   <p>
                     2020年3月大学を卒業（化学工学を専攻）
                     4月から前田組に入社して、6月からプログラミングの勉強を始める。
