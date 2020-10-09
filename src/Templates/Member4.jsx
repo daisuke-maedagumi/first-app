@@ -10,7 +10,7 @@ import ListItem from '@material-ui/core/ListItem'
 // import List from '@material-ui/core/List'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import TopImage from "../assets/images/kyohei.jpg";
+import TopImage from "../assets/images/shovo.JPG";
 
 import Box from '@material-ui/core/Box';
 
@@ -78,22 +78,22 @@ export default function Member4()
                     <li>名前：Shovon Rahman Shuvo</li>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>出身地：バングラディッシュ</li>
+                    <li>出身地：Bangladesh</li>
                   </Grid>
                   <Grid container className="hugehoge">
                     <li>年齢：27</li>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>趣味：ゲーム</li>
+                    <li>趣味：Eating,Travelling,Fishing</li>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <h2>持っている資格</h2>
+                    <h2>スキルセット</h2>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>天才</li>
+                    <li>HTML5,CSS3,Jquery,Javascript,Flutter</li>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>天才</li>
+                    <li>Backend: PHP, Framework: Laravel Database: MySql</li>
                   </Grid>
                 </Typography>
               </Grid>
@@ -103,7 +103,18 @@ export default function Member4()
                 </Grid>
                 <Grid container className="hugehoge" direction="row">
                   <p>
-                    ホゲホゲ
+                    Graduated in Computer Science and Engineering from East West
+                    University,Bangladesh. From then working as full time
+                    software engineer in two different companies. Have great
+                    interest in learning new technologies. My main area of
+                    expertise is web development in PHP,MySQL as Database. Have
+                    done project with Laravel which is one the best PHP
+                    framework. I have also interest in learning different area
+                    of development like mobile application development, machine
+                    learning etc. Worked with some mobile app development
+                    technology like phonegap, Flutter. Started learning python
+                    to increase my area of expertise. Want to learn as much as i
+                    can.
                   </p>
                 </Grid>
               </Grid>
@@ -116,23 +127,20 @@ export default function Member4()
                   justifyContent="stretch"
                   className="hugehoge"
                 >
-                  <ListItem
-                    component="a"
-                    href="https://github.com/KyoheiYamamoto"
-                  >
+                  <ListItem component="a" href="https://github.com/akandshuvo">
                     <GitHubIcon />
                     <ListItemText primary="Github" />
                   </ListItem>
                   <ListItem
                     component="a"
-                    href="https://twitter.com/davidkyohei"
+                    href="https://twitter.com/akandshuvo25"
                   >
                     <TwitterIcon />
                     <ListItemText primary="Twitter" />
                   </ListItem>
                   <ListItem
                     component="a"
-                    href="https://www.instagram.com/kyohei_1642"
+                    href="https://www.instagram.com/shovonshuvo/"
                   >
                     <InstagramIcon />
                     <ListItemText primary="Instagram" />
