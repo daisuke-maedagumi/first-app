@@ -59,7 +59,7 @@ export default function Member3()
 
 
   return (
-    <div className={classes.root.hugehoge}>
+    <div className={classes.hugehoge}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
@@ -75,7 +75,7 @@ export default function Member3()
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" marginTop="100">
+                <Typography gutterBottom variant="subtitle1" >
                   <Grid container className="hugehoge">
                     <h2>自己紹介</h2>
                   </Grid>
@@ -109,7 +109,7 @@ export default function Member3()
                 {/* <Box display="flex" flexDirection="row" p={1} m={1} bgcolor="background.paper">
                 </Box> */}
 
-                <Grid container className="hugehoge" xs="true" direction="row">
+                <Grid container className="hugehoge"  direction="row">
                   <p>
                     2019年3月大学を卒業（情報システム工学を専攻していました）
                     学外ではTABIPPOという団体で旅を広める活動や教育支援団体で教育支援などを行ってきました
