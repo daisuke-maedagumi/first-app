@@ -104,7 +104,7 @@ export default function Member2()
                 <Grid container className="hugehoge" xs="true" direction="row">
                   <p>
                     2020年3月大学を卒業（化学工学を専攻）
-                    今年から前田組に入社して、6月からプログラミングの勉強を始める。
+                    4月から前田組に入社して、6月からプログラミングの勉強を始める。
                     現在はengiennrs_teamに所属し、プログラミング言語はJavaScripで、html,css,Reactを使用中。
                     エンジニアとしての幅を広げるため日々邁進中
                   </p>
