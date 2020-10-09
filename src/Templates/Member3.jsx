@@ -59,23 +59,18 @@ export default function Member3()
 
 
   return (
-    <div className={classes.root.hugehoge}>
+    <div className={classes.hugehoge}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              {/* <img
-                className={classes.img}
-                alt="complex"
-                src="../assets/images/maedagumi5.jpg"
-              /> */}
               <img src={TopImage} alt="complex" className={classes.img} />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="subtitle1" marginTop="100">
+                <Typography gutterBottom variant="subtitle1">
                   <Grid container className="hugehoge">
                     <h2>自己紹介</h2>
                   </Grid>
@@ -89,16 +84,19 @@ export default function Member3()
                     <li>年齢：24</li>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>趣味：スポーツ観戦(野球・サッカー)など</li>
+                    <li>趣味：スポーツ観戦・旅行・読書など</li>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <h2>持っている資格</h2>
+                    <h2>スキルセット</h2>
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>MOSWord2013</li>
+                    <li>
+                      フロントエンド：HTML・CSS・JavaScript(Vue.jsを勉強なう)
+                    </li>
                   </Grid>
+
                   <Grid container className="hugehoge">
-                    <li>MOSExcel2013</li>
+                    <li>バックエンド：PHP(Laravel)</li>
                   </Grid>
                 </Typography>
               </Grid>
@@ -106,14 +104,12 @@ export default function Member3()
                 <Grid container className="hugehoge">
                   <h2>紹介文</h2>
                 </Grid>
-                {/* <Box display="flex" flexDirection="row" p={1} m={1} bgcolor="background.paper">
-                </Box> */}
-
-                <Grid container className="hugehoge" xs="true" direction="row">
+                <Grid container className="hugehoge" direction="row">
                   <p>
                     2019年3月大学を卒業（情報システム工学を専攻していました）
-                    学外ではTABIPPOという団体で旅を広める活動や教育支援団体で教育支援などを行ってきました
-                    現在はプログラミングが好きです（オンラインサロンでも勉強したり教えあったりしています・アウトプットの重要性を実感してます）
+                    学生時代にTABIPPOという団体で旅を広める活動や教育支援団体で教育支援などを行ってきました
+                    オンラインサロンでプログラミングも勉強したり教えあったりしています。
+                    最近の目標はShovon達と英語での円滑なやりとりができるようになることです。
                   </p>
                 </Grid>
               </Grid>
