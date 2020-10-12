@@ -1,0 +1,6 @@
+export {default as Images} from './Images'
+export {default as TopText} from './TopText'
+export {default as SecondText} from './SecondText'
+export {default as ThirdText} from './ThirdText'
+export {default as EndText} from './EndText'
+export {default as Copywriter} from './Copywriter'

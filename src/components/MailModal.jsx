@@ -62,7 +62,14 @@ export default function MailModal(props) {
             method: 'POST',
             body: JSON.stringify(payload)
         }).then(() => {
-            alert('送信が完了しました。追ってご連絡いたします🙌');
+            alert(`送信が完了しました。お問い合わせ内容は以下の通りです。
+                  ---------------------------------------------
+                  お名前：${name}
+                  メールアドレス：${email}
+                  お問い合わせ内容
+                  ${contact}
+                  --------------------------------------------
+                  担当者よりご連絡差し上げますのでしばらくお待ちください。`);
             setContact("")
             setEmail("")
             setName("")
