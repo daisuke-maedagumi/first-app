@@ -6,7 +6,7 @@ import Fade from '@material-ui/core/Fade';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
-import {WEBHOOK_URL} from 'webhookConfig'
+import {WEBHOOK_URL} from '../webhookConfig'
 
 
 const useStyles = makeStyles((theme) => ({
