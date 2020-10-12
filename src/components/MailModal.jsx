@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useCallback} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -6,6 +6,8 @@ import Fade from '@material-ui/core/Fade';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
+import {WEBHOOK_URL} from '../webhookConfig'
+
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -29,8 +31,74 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 export default function MailModal(props) {
   const classes = useStyles();
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [contact, setContact] = useState('')
+  
+  
+
+  const sendEmail =() => {
+    const isBlank = validateRequiredInput(name, email, contact)
+    const isValidEmail = validateEmailFormat(email)
+
+    if (isBlank) {
+      alert('必須入力欄が空白です。')
+      return false
+    } else if (!isValidEmail) {
+        alert('メールアドレスの書式が異なります。')
+        return false
+    } else {
+      const payload = {
+        text: name + '様よりお問い合わせがありました。\n'
+              + 'メールアドレス:' + email + '\n'
+              + '【お問い合わせ内容】\n' + contact
+      }
+
+        // fetchメソッドでフォームの内容をSlackのIncoming Webhook URL に送信する
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        }).then(() => {
+            alert('送信が完了しました。追ってご連絡いたします🙌');
+            setContact("")
+            setEmail("")
+            setName("")
+            return props.handleMailClose()
+        })
+    }
+    
+  }
+
+  const inputName = useCallback((e) => {
+    setName(e.target.value)
+  },[setName])
+
+  const inputEmail = useCallback((e) => {
+    setEmail(e.target.value)
+  },[setEmail])
+
+  const inputContact = useCallback((e) => {
+    setContact(e.target.value)
+  },[setContact])
+
+  const validateEmailFormat = (email) => {
+      const regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      return regex.test(email)
+  }
+
+  const validateRequiredInput = (...args) => {
+    let isBlank = false;
+    for (let i = 0; i < args.length; i=(i+1)|0) {
+        if (args[i] === "") {
+            isBlank = true;
+        }
+    }
+    return isBlank
+};
+
   return (
     <div>
       <Modal
@@ -52,11 +120,16 @@ export default function MailModal(props) {
               label="お名前"
               fullWidth
               margin="normal"
+              value={name}
+              onChange={inputName}
             />
             <TextField 
               label="メールアドレス"
               fullWidth
               margin="normal"
+              value={email}
+              onChange={inputEmail}
+              type={'email'}
             />
             <TextField 
               label="お問い合わせ内容"
@@ -64,9 +137,16 @@ export default function MailModal(props) {
               margin="normal"
               multiline
               rowsMax={5}
+              value={contact}
+              onChange={inputContact}
             />
             <div className={classes.button}>
-              <Button endIcon={<SendIcon/>}  variant="outlined" color="primary">
+              <Button 
+                endIcon={<SendIcon/>}  
+                variant="outlined" 
+                color="primary" 
+                onClick={() => sendEmail(name,email,contact)}>
+                  
                 送信する
               </Button>
             </div>
