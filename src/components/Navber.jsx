@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme) => ({
   menuIcon: {
     width: 30,
     height: 30,
-    color: 'white',
-    marginLeft: 35
+    color: 'rgb(29, 161, 242)',
+    marginLeft: 35,
+    '&:hover': {
+      color: 'orange'
+    }
   },
   icon:{
     width:30,
@@ -27,14 +30,15 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 20px',
     textDecoration: 'none',
     fontSize: '20px',
-    color: 'white',
+    color: 'rgb(29, 161, 242)',
     cursor: 'pointer',
     fontWeight: 'bold'
   },
   BarColor: {
-    backgroundColor: 'gray',
+    backgroundColor: 'white',
     display: 'flex',
-    width: '100%'
+    width: '100%',
+    border: 'solid 1px orange'
   },
   root: {
     width: '100vw',

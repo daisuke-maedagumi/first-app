@@ -9,7 +9,9 @@ const useStyles = makeStyles({
   },
   textTitle: {
     textAlign: 'center',
-    fontSize: '16px'
+    fontSize: '16px',
+    color: 'orange',
+    borderTop: 'solid 1px orange',
   },
   text: {
     textAlign: 'center',
@@ -18,7 +20,12 @@ const useStyles = makeStyles({
   },
   box: {
     textDecoration: 'none',
-    color: 'black'
+    color: 'black',
+    fontWeight: 'bold',
+    '&:hover': {
+      textDecoration:'underLine',
+      color: 'orange'
+    }
   }
 })
 
