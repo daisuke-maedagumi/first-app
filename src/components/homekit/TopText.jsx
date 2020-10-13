@@ -8,7 +8,8 @@ const useStyles = makeStyles({
   },
   textTitle: {
     textAlign: 'center',
-    fontSize: '30px'
+    fontSize: '30px',
+    color: 'rgb(29, 161, 242)'
   },
   text: {
     textAlign: 'center',

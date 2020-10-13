@@ -15,12 +15,15 @@ import CreateIcon from '@material-ui/icons/Create';
 const useStyles = makeStyles((theme) => ({
   drawer: {
       flexShrink: 0,
-      width: 256
+      width: 300
   },
   linkName: {
     textDecoration: 'none',
     fontSize: '18px',
-    color: 'orange'
+    color: 'orange',
+    '&:hover': {
+      color: 'rgb(29, 161, 242)'
+    }
   },
   drawerPaper: {
     width: 256
@@ -29,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center'
   },
   menus: {
-    marginLeft: '30px'
+    marginLeft: '6px'
   }
 }))
 
@@ -46,12 +49,12 @@ const TemporaryDrawer = (props) => {
   
   const menus = [
     {func: selectMenu,label: "Home", icon: <HomeIcon/>, id: "home", value: "/"},
-    {func: selectMenu,label: "Member1", icon: <PersonPinTwoToneIcon/>, id: "Member1", value: "/Member1"},
-    {func: selectMenu,label: "Member2", icon: <PersonPinTwoToneIcon/>, id: "Member2", value: "/Member2"},
-    {func: selectMenu,label: "Member3", icon: <PersonPinTwoToneIcon/>, id: "Member3", value: "/Member3"},
-    {func: selectMenu,label: "Member4", icon: <PersonPinTwoToneIcon/>, id: "Member4", value: "/Member4"},
-    {func: selectMenu,label: "Member5", icon: <PersonPinTwoToneIcon/>, id: "Member5", value: "/Member5"},
-    {func: selectMenu,label: "Member6", icon: <PersonPinTwoToneIcon/>, id: "Member6", value: "/Member6"}
+    {func: selectMenu,label: "Daisuke Ninomiya", icon: <PersonPinTwoToneIcon/>, id: "Member1", value: "/Member1"},
+    {func: selectMenu,label: "Osamu Yamaguchi", icon: <PersonPinTwoToneIcon/>, id: "Member2", value: "/Member2"},
+    {func: selectMenu,label: "Kyohei Yamamoto", icon: <PersonPinTwoToneIcon/>, id: "Member3", value: "/Member3"},
+    {func: selectMenu,label: "Shovon Rahman Shuvo", icon: <PersonPinTwoToneIcon/>, id: "Member4", value: "/Member4"},
+    {func: selectMenu,label: "Shintaro Yamamoto", icon: <PersonPinTwoToneIcon/>, id: "Member5", value: "/Member5"},
+    {func: selectMenu,label: "Shota Nakashime", icon: <PersonPinTwoToneIcon/>, id: "Member6", value: "/Member6"}
   ]
 
   const selectContents = (event, path) => {
