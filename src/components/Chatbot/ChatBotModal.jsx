@@ -3,9 +3,10 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import defaultDataset from '../dataset.js';
-import '../assets/styles/style.css'
-import AnswersList from './AnswersList.jsx'
+import defaultDataset from '../../dataset.js';
+import '../../assets/styles/style.css'
+import {AnswersList, Chats} from './index'
+
 
 // const useStyles = makeStyles((theme) => ({
 //   modal: {
@@ -42,7 +43,23 @@ export default class TransitionsModal extends React.Component {
     })
   }
 
+    initChats = () => {
+      const initDataset = this.state.dataset[this.state.currentId];
+      const chat = {
+        text: initDataset.question,
+        type: 'question'
+      }
+
+      const chats = this.state.chats;
+      chats.push(chat)
+  
+      this.setState( {
+        chats: chats
+      })
+  }
+
   componentDidMount() {
+    this.initChats();
     this.initAnswer()
   }
   render () {
@@ -65,6 +82,7 @@ export default class TransitionsModal extends React.Component {
           <Fade in={this.props.modalOpen}>
             <section className="c-section">
               <div className="c-box">
+                <Chats chats={this.state.chats} />
                 <AnswersList answers={this.state.answers} />
                   {/* <h2 id="transition-modal-title">Transition modal</h2>
                   <p id="transition-modal-description">react-transition-group animates me.</p> */}

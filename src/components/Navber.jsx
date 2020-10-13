@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import {Link} from 'react-router-dom'
 import ContactSupportOutlinedIcon from '@material-ui/icons/ContactSupportOutlined';
-import TransitionsModal from './ChatBotModal'
+import {ChatBotModal} from './Chatbot/index'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import MailModal from './MailModal'
 
@@ -91,7 +91,7 @@ const Navber = (props) => {
         </ToolBar>
       </AppBar>
       <TemporaryDrawer open={open} onClose={handleDrawerToglge}/>
-      <TransitionsModal modalOpen={modalOpen} handleModalClose={handleModalClose}/>
+      <ChatBotModal modalOpen={modalOpen} handleModalClose={handleModalClose}/>
       <MailModal mailOpen={mailOpen} handleMailClose={handleMailClose}/>
     </div>
     
