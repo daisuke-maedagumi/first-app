@@ -12,6 +12,9 @@ import TransitionsModal from './ChatBotModal'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import MailModal from './MailModal'
 
+
+
+
 const useStyles = makeStyles((theme) => ({
   menuIcon: {
     width: 30,
@@ -52,6 +55,7 @@ const Navber = (props) => {
   const [open, setOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false);
   const [mailOpen, setMailOpen] = useState(false)
+  
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -68,6 +72,8 @@ const Navber = (props) => {
   const handleMailClose = () => {
     setMailOpen(false)
   }
+
+  
 
 
   const handleDrawerToglge = useCallback((event) => {

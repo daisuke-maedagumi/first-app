@@ -19,22 +19,30 @@ const useStyles = makeStyles({
   box: {
     marginLeft: '30px',
     marginRight: '30px'
+  },
+  textEn: {
+    textAlign: 'center',
+    fontSize: '20px'
   }
 })
 
 
-const SecondText = () => {
+const SecondText = (props) => {
   const classes = useStyles()
   return (
     <section className={classes.sections}>
       <h1 className={classes.textTitle}>What you can do now</h1>
       <div className={classes.box}>
-        <p className={classes.text}>
+        {(props.checkbox ? <p className={classes.text}>御覧頂きありがとうございます。<br/>
           今私たちに出来る事は、残念ながら多くはありません。<br/>
           だからこそ、皆さんに力を貸して頂きたいです。皆さんの作りたい物、業務課題に感じる事を私達に作らせてください。<br/>
           出来る出来ないはやってみないとわかりませんが、チャレンジする事、それが私達を成長させてくれるからです。<br/>
           チャレンジする事が私達に今出来る事です！
-        </p>
+        </p> : <p className={classes.textEn}> Unfortunately, there is not much we can do now. <br/>
+          That is why I would like you to help us. Let us make what you want to make and what you feel about your business challenges. <br/>
+          I don't know if I can't do it until I try it, but it's a challenge because it makes us grow. <br/>
+          The challenge is what we can do now!
+        </p>)}
       </div>
     </section>
   )

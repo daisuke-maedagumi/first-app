@@ -1,11 +1,12 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import {ProfileText,ProfileImage,TextContents,TextIcon} from '../components/nakashima/index'
+import {ProfileText,ProfileImage,TextContents,TextIcon,ProfileTextEn,TextContentsEn} from '../components/nakashima/index'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItem from '@material-ui/core/ListItem'
 import LanguageIcon from '@material-ui/icons/Language';
+import Switch from '@material-ui/core/Switch';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,26 +41,39 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Member6 = () => {
+
+const Member6 = (props) => {
 
   const classes = useStyles();
+  const [checkbox, setCheckbox] = useState('false')
 
+  const handlecheckBox = () => {
+    setCheckbox(!checkbox)
+  }
+  
 
   return (
     <div className={classes.hugehoge}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <ProfileImage/>
+          <Switch
+            onClick={handlecheckBox}
+            color="primary"
+            name="checkedB"
+            inputProps={{ 'aria-label': 'primary checkbox' }}
+          />
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
-                <ProfileText/>
+                {(checkbox ? <ProfileText/> :<ProfileTextEn/>)}
               </Grid>
               <Grid item>
                 <Grid container className="hugehoge">
-                  <h2>Introduction</h2>
+                  {(checkbox ? <h2>紹介文</h2> : <h2>Introduction</h2>)}
                 </Grid>
-                <TextContents/>
+                {(checkbox ? <TextContents/> : <TextContentsEn/>)}
+                
               </Grid>
               <Grid container className="hugehoge">
                 <h3>SNS</h3>
@@ -69,7 +83,7 @@ const Member6 = () => {
                 <h3>My portfolio site</h3>
                 <ListItem
                   component="a"
-                  href="https://github.com/KyoheiYamamoto"
+                  href="https://nakaji-portrfolio-blogs.netlify.app/"
                 >
                   <LanguageIcon className={classes.icons}/>
                   <ListItemText className={classes.iconFont} primary="NakajiBlog" />
