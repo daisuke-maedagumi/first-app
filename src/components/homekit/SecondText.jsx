@@ -33,7 +33,7 @@ const SecondText = (props) => {
     <section className={classes.sections}>
       <h1 className={classes.textTitle}>What you can do now</h1>
       <div className={classes.box}>
-        {(props.checkbox ? <p className={classes.text}>御覧頂きありがとうございます。<br/>
+        {(props.checkbox ? <p className={classes.text}>
           今私たちに出来る事は、残念ながら多くはありません。<br/>
           だからこそ、皆さんに力を貸して頂きたいです。皆さんの作りたい物、業務課題に感じる事を私達に作らせてください。<br/>
           出来る出来ないはやってみないとわかりませんが、チャレンジする事、それが私達を成長させてくれるからです。<br/>

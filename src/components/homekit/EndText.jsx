@@ -33,10 +33,10 @@ const EndText = (props) => {
     <section className={classes.sections}>
       <h1 className={classes.textTitle}>At the end</h1>
       <div className={classes.box}>
-      {(props.checkbox ? <p className={classes.text}>御覧頂きありがとうございます。<br/>
+      {(props.checkbox ? <p className={classes.text}>
         最後までご覧頂きありがとうございます。<br/>
-          もしやりたい事、業務課題など私達にお手伝い出来る事がありましたら上記✉️よりお問い合わせ頂けると幸いです。<br/>
-          他にもメンバーのプロフィールページを公開していますので、御覧いただけると嬉しいです。
+        もしやりたい事、業務課題など私達にお手伝い出来る事がありましたら上記✉️よりお問い合わせ頂けると幸いです。<br/>
+        他にもメンバーのプロフィールページを公開していますので、御覧いただけると嬉しいです。
         </p> : <p className={classes.textEn}>Thank you for watching until the end. <br/>
           If you have something you want to do, business issues, etc. that we can help you with, we would appreciate it if you could contact us from the above ✉️. <br/>
           We also have other members' profile pages open to the public, so please take a look.
