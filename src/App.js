@@ -3,6 +3,8 @@ import Router from './Router.jsx'
 import Navber from './components/Navber.jsx'
 import {makeStyles} from '@material-ui/styles'
 
+
+
 const useStyles = makeStyles({
   nav: {
     position: 'fixed',
@@ -10,6 +12,9 @@ const useStyles = makeStyles({
   },
   sections: {
     overflow: 'scroll'
+  },
+  switches: {
+    marginTop: '100px'
   }
 })
 
@@ -17,12 +22,14 @@ const useStyles = makeStyles({
 
 
 
+
 function App() {
   const classes = useStyles()
+
   return (
     <div>
       <Navber className={classes.nav}/>
-      <Router className={classes.sections}/>
+      <Router className={classes.sections}/> 
     </div>
   );
 }

@@ -124,14 +124,14 @@ export default function MailModal(props) {
           <div className={classes.paper}>
             <h2 id="transition-modal-title" className={classes.contents}>お問い合わせフォーム</h2>
             <TextField 
-              label="お名前"
+              label="お名前(Name)"
               fullWidth
               margin="normal"
               value={name}
               onChange={inputName}
             />
             <TextField 
-              label="メールアドレス"
+              label="メールアドレス(Email)"
               fullWidth
               margin="normal"
               value={email}
@@ -139,7 +139,7 @@ export default function MailModal(props) {
               type={'email'}
             />
             <TextField 
-              label="お問い合わせ内容"
+              label="お問い合わせ内容(Inquiry content)"
               fullWidth
               margin="normal"
               multiline

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItem from '@material-ui/core/ListItem'
-// import List from '@material-ui/core/List'
+import Switch from '@material-ui/core/Switch';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TopImage from "../assets/images/ninomiya.jpg";
 
@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Member3()
 {
   const classes = useStyles();
+  const [checkbox, setCheckbox] = useState('false')
+
+  const handlecheckBox = () => {
+    setCheckbox(!checkbox)
+  }
 
 
   return (
@@ -69,51 +74,63 @@ export default function Member3()
               /> */}
               <img src={TopImage} alt="complex" className={classes.img} />
             </ButtonBase>
+            <Switch
+              onClick={handlecheckBox}
+              color="primary"
+              name="checkedB"
+              inputProps={{ 'aria-label': 'primary checkbox' }}
+            />
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
                   <Grid container className="hugehoge">
-                    <h2>自己紹介</h2>
+                    {(checkbox ? <h2>自己紹介</h2> : <h2>Introduction</h2>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>名前：二ノ宮　大翼（にのみやだいすけ）</li>
+                  {(checkbox ? <li>名前：二ノ宮　大翼（にのみやだいすけ）</li> : <li>Name: Daisuke Ninomiya</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>出身地：福岡県中間市</li>
+                  {(checkbox ? <li>出身地：福岡県中間市</li> : <li>From：Nakama City, Fukuoka</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>年齢：33</li>
+                  {(checkbox ? <li>年齢：33</li> : <li>Age：33</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>趣味：読書など</li>
+                  {(checkbox ? <li>趣味：読書など</li> : <li>Hobby：Reading etc.</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <h2>持っている資格</h2>
+                  {(checkbox ? <h2>持っている資格</h2> : <h2>Qualification</h2>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>建設業経理士2級</li>
+                  {(checkbox ? <li>建設業経理士2級</li> : <li>Construction industry accountant 2nd grade</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>宅地建物取引士試験合格</li>
+                  {(checkbox ? <li>宅地建物取引士試験合格</li> : <li>”TAKKENSI”Pass</li>)}
                   </Grid>
                 </Typography>
               </Grid>
               <Grid item>
                 <Grid container className="hugehoge">
-                  <h2>紹介文</h2>
+                {(checkbox ? <h2>紹介文</h2> : <h2>Introduction</h2>)}
                 </Grid>
                 {/* <Box display="flex" flexDirection="row" p={1} m={1} bgcolor="background.paper">
                 </Box> */}
                 <Grid container className="hugehoge"  direction="row">
-                  <p>
+                {(checkbox ? <p>
                     2019年に11年間務めたハウスメーカーを退職し前々から興味を持っていたプログラミングの勉強を始め、
                     縁があって前田組に入社しました。
                     私は未経験という立場であるので、しっかりと技術力を身につけていきたいと思います。
                     こんな機能を実装したい、こんなアプリを作りたいと思った時に、即実行できるレベルのエンジニアになってけるよう
                     頑張っていきます。
-                  </p>
+                  </p> : <p>
+                    I retired from the house maker who worked for 11 years in 2019 and started studying programming that I was interested in for a long time
+                    I joined Maeda-gumi because of my relationship.<br/>
+                    Since I am inexperienced, I would like to firmly acquire technical skills.<br/>
+                    When you want to implement such a function or create such an application, you can become an engineer who can execute it immediately.<br/>
+                    I will do my best.
+                  </p>)}
                 </Grid>
               </Grid>
               <Grid container className="hugehoge">

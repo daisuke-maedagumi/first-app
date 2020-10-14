@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -7,7 +7,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItem from '@material-ui/core/ListItem'
-// import List from '@material-ui/core/List'
+import Switch from '@material-ui/core/Switch';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TopImage from "../assets/images/shovo.JPG";
@@ -56,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Member4()
 {
   const classes = useStyles();
+  const [checkbox, setCheckbox] = useState('false')
+
+  const handlecheckBox = () => {
+    setCheckbox(!checkbox)
+  }
 
 
   return (
@@ -66,28 +71,34 @@ export default function Member4()
             <ButtonBase className={classes.image}>
               <img src={TopImage} alt="complex" className={classes.img} />
             </ButtonBase>
+            <Switch
+              onClick={handlecheckBox}
+              color="primary"
+              name="checkedB"
+              inputProps={{ 'aria-label': 'primary checkbox' }}
+            />
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
                   <Grid container className="hugehoge">
-                    <h2>自己紹介</h2>
+                  {(checkbox ? <h2>自己紹介</h2> : <h2>Introduction</h2>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>名前：Shovon Rahman Shuvo</li>
+                  {(checkbox ? <li>名前：Shovon Rahman Shuvo</li> : <li>Name: Shovon Rahman Shuvo</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>出身地：Bangladesh</li>
+                  {(checkbox ? <li>出身地：バングラディッシュ</li> : <li>From：Bangladesh</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>年齢：27</li>
+                    {(checkbox ? <li>年齢：27</li> : <li>Age：27</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <li>趣味：Eating,Travelling,Fishing</li>
+                  {(checkbox ? <li>趣味：食べる事、旅行、釣り</li> : <li>Hobby：Eating,Travelling,Fishing</li>)}
                   </Grid>
                   <Grid container className="hugehoge">
-                    <h2>スキルセット</h2>
+                  {(checkbox ? <h2>スキルセット</h2> : <h2>Skill set</h2>)}
                   </Grid>
                   <Grid container className="hugehoge">
                     <li>HTML5,CSS3,Jquery,Javascript,Flutter</li>
@@ -99,15 +110,21 @@ export default function Member4()
               </Grid>
               <Grid item>
                 <Grid container className="hugehoge">
-                  <h2>紹介文</h2>
+                  {(checkbox ? <h2>紹介文</h2> : <h2>Introduction</h2>)}
                 </Grid>
                 <Grid container className="hugehoge" direction="row">
-                  <p>
+                  {(checkbox ? <p>
+                    バングラデシュのイーストウェスト大学でコンピューターサイエンスとエンジニアリングを卒業。<br/>
+                    それ以来、2つの異なる会社でフルタイムのソフトウェアエンジニアとして働いています。<br/>
+                    新しいテクノロジーの学習に大きな関心を持っています。<br/>
+                    私の主な専門分野は、PHPでのWeb開発、データベースとしてのMySQLです。最高のPHPフレームワークの1つであるLaravelでプロジェクトを完了しました。<br/>
+                    また、モバイルアプリケーション開発、機械学習など、さまざまな開発分野の学習にも興味があります。phonegap、Flutterなどのモバイルアプリ開発テクノロジーを使用していました。私の専門分野を増やすためにPythonを学び始めました。できるだけ多くのことを学びたいと思います。
+                    </p> : <p>
                     Graduated in Computer Science and Engineering from East West
-                    University,Bangladesh. From then working as full time
-                    software engineer in two different companies. Have great
-                    interest in learning new technologies. My main area of
-                    expertise is web development in PHP,MySQL as Database. Have
+                    University,Bangladesh.<br/> From then working as full time
+                    software engineer in two different companies. <br/>Have great
+                    interest in learning new technologies.<br/> My main area of
+                    expertise is web development in PHP,MySQL as Database.<br/> Have
                     done project with Laravel which is one the best PHP
                     framework. I have also interest in learning different area
                     of development like mobile application development, machine
@@ -115,7 +132,7 @@ export default function Member4()
                     technology like phonegap, Flutter. Started learning python
                     to increase my area of expertise. Want to learn as much as i
                     can.
-                  </p>
+                  </p>)}
                 </Grid>
               </Grid>
               <Grid container className="hugehoge">
