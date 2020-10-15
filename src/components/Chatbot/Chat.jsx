@@ -16,7 +16,7 @@ const Chat = (props) => {
                     <Avatar alt="icon" src={Kyohei} />
                 ) : (
                     <Avatar alt="icon" src={NoProfile} />
-                ) }
+                )}
             
             
             </ListItemAvatar>

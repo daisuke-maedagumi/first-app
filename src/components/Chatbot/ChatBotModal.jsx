@@ -7,60 +7,57 @@ import defaultDataset from '../../dataset.js';
 import '../../assets/styles/style.css'
 import {AnswersList, Chats} from './index'
 
-
-// const useStyles = makeStyles((theme) => ({
-//   modal: {
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   paper: {
-//     backgroundColor: theme.palette.background.paper,
-//     border: '2px solid #000',
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing(2, 4, 3),
-//   },
-// }));
+// ここにコピペ
 
 export default class TransitionsModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answers: [],
+      answers: [], 
       chats: [],
       currentId: "init",
-      dataset: defaultDataset,
+      dataSet: defaultDataset,
       open: false
     };
+    this.selectAnswer = this.selectAnswer.bind(this)
   }
 
-  initAnswer = () => {
-    const initDataset = this.state.dataset[this.state.currentId];
-    const initAnswers = initDataset.answers;
+  displayNextQuestion = (nextQuestionId) => {
+    const chats = this.state.chats;
+        chats.push({
+            text: this.state.dataSet[nextQuestionId].question,
+            type: 'question'
+        });
 
-    this.setState( {
-      answers: initAnswers
+        this.setState({
+          answers: this.state.dataSet[nextQuestionId].answers,  
+          chats: chats,    
+          currentId: nextQuestionId,       
     })
-  }
-
-    initChats = () => {
-      const initDataset = this.state.dataset[this.state.currentId];
-      const chat = {
-        text: initDataset.question,
-        type: 'question'
-      }
-
-      const chats = this.state.chats;
-      chats.push(chat)
+  }  
   
-      this.setState( {
-        chats: chats
-      })
-  }
+  selectAnswer = (selectedAnswer, nextQuestionId) => {
+    switch (true) {
+      case (nextQuestionId === 'init'):
+        this.displayNextQuestion(nextQuestionId)
+        break;
+      default:
+        const chats = this.state.chats
+        chats.push({
+          text: selectedAnswer,
+          type: 'answer'
+        })
+        this.setState({
+          chats: chats
+        })
+        this.displayNextQuestion(nextQuestionId)
+        break;
+    }
+  }  
 
   componentDidMount() {
-    this.initChats();
-    this.initAnswer()
+    const initAnswer = ""
+    this.selectAnswer(initAnswer, this.state.currentId)
   }
   render () {
     
@@ -83,7 +80,7 @@ export default class TransitionsModal extends React.Component {
             <section className="c-section">
               <div className="c-box">
                 <Chats chats={this.state.chats} />
-                <AnswersList answers={this.state.answers} />
+                <AnswersList answers={this.state.answers} select={this.selectAnswer} />
                   {/* <h2 id="transition-modal-title">Transition modal</h2>
                   <p id="transition-modal-description">react-transition-group animates me.</p> */}
                 </div>              
@@ -92,6 +89,6 @@ export default class TransitionsModal extends React.Component {
         </Modal>
       </div>
       );
-   }
+    }
 }
 
