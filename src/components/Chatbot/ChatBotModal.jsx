@@ -16,26 +16,31 @@ export default class TransitionsModal extends React.Component {
       answers: [], 
       chats: [],
       currentId: "init",
-      dataSet: defaultDataset,
+      dataset: defaultDataset,
       open: false
     };
     this.selectAnswer = this.selectAnswer.bind(this)
   }
-
-  displayNextQuestion = (nextQuestionId) => {
-    const chats = this.state.chats;
-        chats.push({
-            text: this.state.dataSet[nextQuestionId].question,
-            type: 'question'
-        });
-
-        this.setState({
-          answers: this.state.dataSet[nextQuestionId].answers,  
-          chats: chats,    
-          currentId: nextQuestionId,       
-    })
-  }  
   
+  displayNextQuestion = (nextQuestionId) => {
+    const chats = this.state.chats
+    chats.push({
+      text: this.state.dataset[nextQuestionId].question,
+      type: 'question'
+    })
+
+    this.setState({
+      answers: this.state.dataset[nextQuestionId].answers,
+      chats: chats,
+      currentId: nextQuestionId
+    })
+  }
+  
+  
+  
+  
+
+
   selectAnswer = (selectedAnswer, nextQuestionId) => {
     switch (true) {
       case (nextQuestionId === 'init'):
