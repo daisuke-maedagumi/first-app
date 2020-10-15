@@ -1,14 +1,17 @@
+import { Select } from '@material-ui/core'
 import React from 'react'
-import Answer from './Answer.jsx'
+import {Answer} from './index'
+
 
 const AnswersList = (props) => {
-    return(
+    return (
         <div className="c-grid__answer">
             {props.answers.map((value, index) => {
-                return <Answer content={value.content} key={index.toString()} />
+                return <Answer content={value.content} nextId={value.nextId} key={index.toString()} select={props.select}/>
             })}
         </div>
     )
 }
+
 
 export default AnswersList
