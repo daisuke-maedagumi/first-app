@@ -2,11 +2,11 @@ const defaultDataset = {
     "init": {
         answers: [
             {content: "仕事を依頼したい", nextId: "job_offer"},
-            {content: "エンジニアのキャリアについて相談したい", nextId: "consultant"},
-            {content: "学習コミュニティについて知りたい", nextId: "community"},
+            {content: "Kyoheiさんの好きな食べ物が知りたい", nextId: "consultant"},
+            {content: "Kyoheiさん好きな飲み物が知りたい", nextId: "community"},
             {content: "お付き合いしたい", nextId: "dating"},
         ],
-        question: "こんにちは！🐯トラハックへのご用件はなんでしょうか？",
+        question: "こんにちは！エンジニアチームリーダーのKyoheiです。どのようなご用件ですか？",
     },
     "job_offer": {
         answers: [
@@ -19,62 +19,68 @@ const defaultDataset = {
     },
     "website": {
         answers: [
-            {content: "問い合わせる", nextId: "contact"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "Webサイト細作についてですね。コチラからお問い合わせできます。",
+        question: "Webサイト細作についてですね。トップページの　✉️　からお問い合わせできます。",
     },
     "webapp": {
         answers: [
             {content: "問い合わせる", nextId: "contact"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "Webアプリ開発についてですね。コチラからお問い合わせできます。",
+        question: "Webアプリ開発についてですね。トップページの　✉️　からお問い合わせできます。",
     },
     "automation_tool": {
         answers: [
             {content: "問い合わせる", nextId: "contact"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "自動化ツール開発についてですね。コチラからお問い合わせできます。",
+        question: "自動化ツール開発についてですね。トップページの　✉️　からお問い合わせできます。",
     },
     "other_jobs": {
         answers: [
             {content: "問い合わせる", nextId: "contact"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "その他についてですね。コチラからお問い合わせできます。",
+        question: "その他についてですね。トップページの　✉️　からお問い合わせできます。",
     },
     "consultant": {
         answers: [
-            {content: "YouTubeで動画を見る", nextId: "https://www.youtube.com/channel/UC-bOAxx-YOsviSmqh8COR0w"},
-            {content: "学習コミュニティについて知りたい", nextId: "community"},
+            {content: "Kyoheiさんとハンバーグ食べに行きたいです", nextId: "hamburger"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "トラハックは普段からYouTubeでキャリアについて発信しています。また、僕が運営するエンジニア向け学習コミュニティ内でも相談に乗っていますよ。",
+        question: "私はハンバーグが大好きです。ハンバーグなら朝昼晩食べても苦じゃないです。",
     },
     "community": {
         answers: [
-            {content: "どんな活動をしているの？", nextId: "community_activity"},
-            {content: "コミュニティに参加したい", nextId: "https://torahack.web.app/community/"},
+            {content: "Kyoheiさんとコーラ飲みにいきたいです。", nextId: "community_activity"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "2020年3月から学習コミュニティを始めました！🎉Webエンジニアへの転職を目指す人向けに、プログラミングを教えたりキャリアの相談に乗っています。",
+        question: "私はコーラが好きです。好きすぎて朝昼晩飲んでいます。",
     },
     "community_activity": {
         answers: [
-            {content: "さらに詳細を知りたい", nextId: "https://youtu.be/tIzE7hUDbBM"},
-            {content: "コミュニティに参加したい", nextId: "https://torahack.web.app/community/"},
+            {content: "DMする", nextId: "https://twitter.com/davidkyohei"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "フロントエンド向けの教材の提供、キャリアや勉強法に関するメルマガの配信、週1のオンライン作業会などを開催しています！\n詳細はYouTube動画で紹介しています。",
+        question: "ぜひ行きましょう！私のオススメはジョイフルです。ドリンクバーで飲み放題です。DM待ってます😘",
     },
+    
+    "hamburger": {
+        answers: [
+            {content: "DMする", nextId: "https://twitter.com/davidkyohei"},
+            {content: "最初の質問に戻る", nextId: "init"}
+        ],
+        question: "ぜひ行きましょう！私のオススメはジョイフルです。とても安価でハンバーグが食べれます。DM待ってます😘",
+    },
+    
+
     "dating": {
         answers: [
-            {content: "DMする", nextId: "https://twitter.com/torahack_"},
+            {content: "DMする", nextId: "https://twitter.com/davidkyohei"},
             {content: "最初の質問に戻る", nextId: "init"}
         ],
-        question: "まずは一緒にランチでもいかがですか？DMしてください😘",
+        question: "まずは一緒にランチでもいかがですか？DM待ってます😘",
     },
 }
 
