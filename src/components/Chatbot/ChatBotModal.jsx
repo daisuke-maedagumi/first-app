@@ -3,9 +3,11 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import defaultDataset from '../../dataset.js';
+// import defaultDataset from '../../dataset.js';
 import '../../assets/styles/style.css'
 import {AnswersList, Chats} from './index'
+import {db} from '../../firebase/index'
+
 
 // ここにコピペ
 
@@ -16,7 +18,7 @@ export default class TransitionsModal extends React.Component {
       answers: [], 
       chats: [],
       currentId: "init",
-      dataset: defaultDataset,
+      dataset: {},
       open: false
     };
     this.selectAnswer = this.selectAnswer.bind(this)
@@ -66,9 +68,26 @@ export default class TransitionsModal extends React.Component {
     }
   }  
 
+  initDataset = (dataset) => {
+    this.setState({dataset: dataset})
+  }
+
   componentDidMount() {
-    const initAnswer = ""
-    this.selectAnswer(initAnswer, this.state.currentId)
+    (async() => {
+      const dataset = this.state.dataset
+
+      await db.collection('questions').get().then(snapshots => {
+        snapshots.forEach(doc => {
+          const id = doc.id
+          const data = doc.data()
+          dataset[id] = data
+        })
+      })
+      
+      this.initDataset(dataset)
+      const initAnswer = ""
+      this.selectAnswer(initAnswer, this.state.currentId)
+    })()
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -77,6 +96,9 @@ export default class TransitionsModal extends React.Component {
       scrollArea.scrollTop = scrollArea.scrollHeight
     }
   }
+　
+
+  
 
   render () {
     
@@ -95,7 +117,7 @@ export default class TransitionsModal extends React.Component {
             timeout: 500,
           }}
         >
-          <Fade in={this.props.modalOpen}>
+          <Fade in={this.props.modalOpen} >
             <section className="c-section">
               <div className="c-box">
                 <Chats chats={this.state.chats} />
