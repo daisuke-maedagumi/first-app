@@ -75,36 +75,24 @@ import {db} from '../../firebase/index'
       }
     })
 
-    
-  　console.log(props.handleModalClose)
   return (
     <div>
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        // className={classes.modal}
+        
         open={props.modalOpen}
         onClose={props.handleModalClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
       >
-        <Fade in={props.modalOpen} >
-          <section className="c-section">
-            <div className="c-box">
-              <Chats chats={chats} />
-              <AnswersList answers={answers} select={selectAnswer} />
-                {/* <h2 id="transition-modal-title">Transition modal</h2>
-                <p id="transition-modal-description">react-transition-group animates me.</p> */}
+          <Fade in={props.modalOpen} >
+              <div className="c-box">
+                <Chats chats={chats} />
+                <AnswersList answers={answers} select={selectAnswer} />
               </div>              
-          </section>
-        </Fade>
+          </Fade>      
       </Modal>
     </div>
-    );
-  
+  );
 }
 
 export default TransitionsModal
