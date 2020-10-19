@@ -11,6 +11,7 @@ import PersonPinTwoToneIcon from '@material-ui/icons/PersonPinTwoTone';
 import {useDispatch} from 'react-redux'
 import {push} from 'connected-react-router'
 import CreateIcon from '@material-ui/icons/Create';
+import FingerprintIcon from '@material-ui/icons/Fingerprint';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -63,7 +64,8 @@ const TemporaryDrawer = (props) => {
   }
 
   const contents = [
-    {func: selectContents,label: "Blog", icon: <CreateIcon/>, id: "Blog", value: "/blog"}
+    {func: selectContents,label: "Blog", icon: <CreateIcon/>, id: "Blog", value: "/blog"},
+    {func: selectContents,label: "Administrator only", icon: <FingerprintIcon/>, id: "Administrator", value: "/administrator"}
   ]
 
   return (
