@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -11,125 +11,88 @@ import {db} from '../../firebase/index'
 
 // ここにコピペ
 
-export default class TransitionsModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      answers: [], 
-      chats: [],
-      currentId: "init",
-      dataset: {},
-      open: false
-    };
-    this.selectAnswer = this.selectAnswer.bind(this)
-  }
+ const TransitionsModal = (props) => {
+    const [answers, setAnsers] = useState([]);
+    const [chats, setChats] = useState([]);
+    const [currentId, setCurrentId] = useState("init");
+    const [dataset, setDataset] = useState({});
+    
   
-  displayNextQuestion = (nextQuestionId) => {
-    const chats = this.state.chats
-    chats.push({
-      text: this.state.dataset[nextQuestionId].question,
-      type: 'question'
-    })
-
-    this.setState({
-      answers: this.state.dataset[nextQuestionId].answers,
-      chats: chats,
-      currentId: nextQuestionId
-    })
-  }
-  
-  
-  
-  
-
-
-  selectAnswer = (selectedAnswer, nextQuestionId) => {
-    switch (true) {
-      case (nextQuestionId === 'init'):
-        setTimeout(() => this.displayNextQuestion(nextQuestionId), 500);
-        break;
-      case(/^https:*/.test(nextQuestionId)):
-        const a = document.createElement('a');
-        a.href = nextQuestionId;
-        a.target = '_blank';
-        a.click();
-        break;
-      default:
-        const chats = this.state.chats
-        chats.push({
-          text: selectedAnswer,
-          type: 'answer'
-        })
-        this.setState({
-          chats: chats
-        })
-        setTimeout(() => this.displayNextQuestion(nextQuestionId), 500);
-        break;
-    }
-  }  
-
-  initDataset = (dataset) => {
-    this.setState({dataset: dataset})
-  }
-
-  componentDidMount() {
-    (async() => {
-      const dataset = this.state.dataset
-
-      await db.collection('questions').get().then(snapshots => {
-        snapshots.forEach(doc => {
-          const id = doc.id
-          const data = doc.data()
-          dataset[id] = data
-        })
+    const displayNextQuestion = (nextQuestionId, nextDataset) => {
+      addChats({
+        text: nextDataset.question,
+        type: 'question'
       })
       
-      this.initDataset(dataset)
-      const initAnswer = ""
-      this.selectAnswer(initAnswer, this.state.currentId)
-    })()
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    const scrollArea = document.getElementById('scroll-area')
-    if (scrollArea) {
-      scrollArea.scrollTop = scrollArea.scrollHeight
+      setAnsers(nextDataset.answers)
+      setCurrentId(nextQuestionId)
     }
-  }
-　
+    const selectAnswer = (selectedAnswer, nextQuestionId) => {
+      switch (true) {
+        case(/^https:*/.test(nextQuestionId)):
+          const a = document.createElement('a');
+          a.href = nextQuestionId;
+          a.target = '_blank';
+          a.click();
+          break;
+        default:
+          addChats({
+            text: selectedAnswer,
+            type: 'answer'
+          })
 
-  
+          setTimeout(() => displayNextQuestion(nextQuestionId, dataset[nextQuestionId]), 500);
+          break;
+      }
+    }  
 
-  render () {
-    
-  // const classes = useStyles();
-    return (
-      <div>
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          // className={classes.modal}
-          open={this.props.modalOpen}
-          onClose={this.props.handleModalClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-          }}
-        >
-          <Fade in={this.props.modalOpen} >
-            <section className="c-section">
+    const addChats = (chat) => {
+      setChats(prevChats => {
+        return [...prevChats, chat]
+      })
+    }
+      
+    useEffect(() => {
+      (async() => {
+        const initDataset = {};
+        await db.collection('questions').get().then(snapshots => {
+          snapshots.forEach(doc => {
+            const id = doc.id 
+            const data = doc.data()
+            initDataset[id] = data
+          })
+        })
+        setDataset(initDataset);
+        displayNextQuestion(currentId, initDataset[currentId])
+      })()
+    },[])
+
+
+    useEffect(() => {
+      const scrollArea = document.getElementById('scroll-area')
+      if (scrollArea) {
+        scrollArea.scrollTop = scrollArea.scrollHeight
+      }
+    })
+
+  return (
+    <div>
+      <Modal
+        
+        open={props.modalOpen}
+        onClose={props.handleModalClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+          <Fade in={props.modalOpen} >
               <div className="c-box">
-                <Chats chats={this.state.chats} />
-                <AnswersList answers={this.state.answers} select={this.selectAnswer} />
-                  {/* <h2 id="transition-modal-title">Transition modal</h2>
-                  <p id="transition-modal-description">react-transition-group animates me.</p> */}
-                </div>              
-            </section>
-          </Fade>
-        </Modal>
-      </div>
-      );
-    }
+                <Chats chats={chats} />
+                <AnswersList answers={answers} select={selectAnswer} />
+              </div>              
+          </Fade>      
+      </Modal>
+    </div>
+  );
 }
 
+export default TransitionsModal
