@@ -3,6 +3,7 @@ import {TextInput,SelectBox,PrimaryButton} from '../components/uiKid/index'
 import {makeStyles} from '@material-ui/styles'
 import { useDispatch } from 'react-redux'
 import {saveBlogs} from '../reducks/blogs/operations'
+import ImageArea from '../components/Blogs/ImageArea'
 
 const useStyles = makeStyles({
   sections: {
@@ -32,6 +33,7 @@ const Administrator = () => {
   const [title, setTitle]= useState('')
   const [text, setText] = useState('')
   const [member, setMember] = useState('')
+  const [images, setImages] = useState([])
 
   const inputTitle = useCallback((e) => {
     setTitle(e.target.value)
@@ -53,6 +55,7 @@ const Administrator = () => {
     <section className={classes.sections}>
       <h1 className={classes.textHeadLine}>Administrator Pages</h1>
       <div className={classes.container}>
+        <ImageArea images={images} setImages={setImages}/>
         <TextInput
         fullWidth={true} label={'Title'} multiline={false} required={true}
         onChange={inputTitle} rows={1} value={title} type={'text'}

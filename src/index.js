@@ -5,6 +5,7 @@ import createStore from './reducks/store/store'
 import {ConnectedRouter} from 'connected-react-router'
 import * as History from 'history'
 import './assets/styles/index.css';
+import './assets/styles/textStyles.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
