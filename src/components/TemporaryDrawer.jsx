@@ -55,7 +55,7 @@ const TemporaryDrawer = (props) => {
     {func: selectMenu,label: "Kyohei Yamamoto", icon: <PersonPinTwoToneIcon/>, id: "Member3", value: "/Member3"},
     {func: selectMenu,label: "Shovon Rahman Shuvo", icon: <PersonPinTwoToneIcon/>, id: "Member4", value: "/Member4"},
     {func: selectMenu,label: "Shintaro Yamamoto", icon: <PersonPinTwoToneIcon/>, id: "Member5", value: "/Member5"},
-    {func: selectMenu,label: "Shota Nakashime", icon: <PersonPinTwoToneIcon/>, id: "Member6", value: "/Member6"}
+    {func: selectMenu,label: "Shota Nakashima", icon: <PersonPinTwoToneIcon/>, id: "Member6", value: "/Member6"}
   ]
 
   const selectContents = (event, path) => {

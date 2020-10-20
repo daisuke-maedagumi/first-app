@@ -1,4 +1,7 @@
 const initialState = {
+  blogs: {
+    blogList: []
+  },
   members: {
     isSignedIn: false,
     memberName: ''

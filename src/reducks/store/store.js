@@ -5,7 +5,7 @@ import {
 } from 'redux';
 import {connectRouter, routerMiddleware} from 'connected-react-router'
 
-
+import {BlogsReducer} from '../blogs/reducers'
 import {MemberReducer} from '../members/reducers'
 
 
@@ -14,6 +14,7 @@ export default function createStore (history) {
     combineReducers({
       router: connectRouter(history),
       member: MemberReducer,
+      blogs: BlogsReducer
     }),
     applyMiddleware(
       routerMiddleware(history)
