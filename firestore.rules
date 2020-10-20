@@ -4,7 +4,7 @@ service cloud.firestore {
     match /{document=**} {
       allow read;
       allow write: if request.anth.uid != null;
-    },
+    }
     match /blogs/{blogId} {
       allow read: if request.anth.uid != null;
       allow write: if request.anth.uid != null;
