@@ -21,6 +21,17 @@ const useStyles = makeStyles({
 const ImageArea = (props) => {
   const classes = useStyles()
 
+  const deleteImage = useCallback(async(id) => {
+    const ret = window.confirm('画像を削除してもいいですか？')
+    if (!ret) {
+      return false
+    } else {
+      const newImages = props.images.filter(image => image.id !== id)
+      props.setImages(newImages)
+      return storage.ref('images').child('id').delete()
+    }
+  },[props.images])
+
   const uploadImages = useCallback((e) => {
     const file = e.target.files;
     let blob = new Blob(file, { type: "image/jpeg" });
@@ -42,7 +53,7 @@ const ImageArea = (props) => {
     <div>
       <div className="p-grid__list-images">
         {props.images.length > 0 && (
-          props.images.map(image => <ImagePreview id={image.id} path={image.path} key={image.id}/>)
+          props.images.map(image => <ImagePreview delete={deleteImage} id={image.id} path={image.path} key={image.id}/>)
         )}
       </div>
       <div className={classes.textRight}>
