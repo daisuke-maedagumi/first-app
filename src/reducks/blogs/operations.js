@@ -3,7 +3,7 @@ import {db, FirebaseTimestamp} from '../../firebase/index'
 
 const blogsRef = db.collection('blogs')
 
-export const saveBlogs = (title,text,member) => {
+export const saveBlogs = (title,text,member,images) => {
   return async (dispatch) => {
     const timeStamp = FirebaseTimestamp.now()
 
@@ -11,6 +11,7 @@ export const saveBlogs = (title,text,member) => {
       title: title,
       text: text,
       member: member,
+      images: images,
       updated_at: timeStamp
     }
     const ref = blogsRef.doc()

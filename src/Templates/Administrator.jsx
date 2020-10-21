@@ -71,7 +71,7 @@ const Administrator = () => {
         <div>
           <PrimaryButton
           label={'Post a blog'}
-          onClick={() => dispatch(saveBlogs(title,text,member))}/>
+          onClick={() => dispatch(saveBlogs(title,text,member,images))}/>
         </div>
       </div>
     </section>
