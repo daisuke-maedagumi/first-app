@@ -3,7 +3,7 @@ import Router from './Router.jsx'
 import Navber from './components/Navber.jsx'
 import {makeStyles} from '@material-ui/styles'
 import {useDispatch, useSelector} from "react-redux"
-import { signInAction } from './reducks/members/actions.js';
+import { signInAction } from './reducks/users/actions.js';
 
 
 
@@ -28,14 +28,14 @@ const useStyles = makeStyles({
 function App() {
   const dispatch = useDispatch()
   const selector  = useSelector((state) => state) 
-  console.log(selector.member)
   const classes = useStyles()
+  console.log(selector.users)
 
   return (
     <div>
       <Navber className={classes.nav}/>
       <Router className={classes.sections}/> 
-      <button onClick={() => dispatch(signInAction({uid: "00001", memberName: "daisuke"})) }>
+      <button onClick={() => dispatch(signInAction({uid: "00001", userName: "daisuke"})) }>
         Sign In
       </button>   
     </div>

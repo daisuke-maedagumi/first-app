@@ -2,10 +2,10 @@ const initialState = {
   blogs: {
     blogList: []
   },
-  members: {
+  users: {
     isSignedIn: false,
     uid: "",
-    memberName: ''
+    userName: ''
   }
 };
 

@@ -1,11 +1,11 @@
 export const SIGN_IN = "SIGN_IN"
-export const signInAction = (MemberState) => {
+export const signInAction = (uemberState) => {
   return {
     type: "SIGN_IN",
     paylord: {
       isSignedIn: true,
-      uid: MemberState.uid,
-      memberName: MemberState.memberName
+      uid: uemberState.uid,
+      userName: uemberState.userName
     }
   }
 };
@@ -17,7 +17,7 @@ export const signOutAction = () => {
     paylord: {
       isSignedIn: false,
       uid: "",
-      memberName: ""
+      userName: ""
     }
   }
 }
