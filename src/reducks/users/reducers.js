@@ -13,3 +13,5 @@ export const UsersReducer = (state = initialState.users, action) => {
   
   }
 }
+
+console.log(Actions.signInAction)
