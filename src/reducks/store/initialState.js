@@ -4,8 +4,9 @@ const initialState = {
   },
   members: {
     isSignedIn: false,
+    uid: "",
     memberName: ''
   }
-}
+};
 
 export default initialState
