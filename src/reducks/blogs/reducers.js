@@ -8,6 +8,11 @@ export const BlogsReducer = (state = initialState.blogs, action) => {
         ...state,
         list: [...action.payload]
       }
+    case Actions.DELETE_BLOG: 
+      return {
+        ...state,
+        list: [...action.payload]
+      }
     default:
       return state
   }
