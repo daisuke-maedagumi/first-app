@@ -14,7 +14,7 @@ const Router = (props) => {
         <Route exact path={"/Member4"} component={Member4} />
         <Route exact path={"/Member5"} component={Member5} />
         <Route exact path={"/Member6"} component={Member6}/>
-        <Route exact path={"/Administrator"} component={Administrator}/> 
+        <Route path={"/Administrator/edit(/:id)?"} component={Administrator}/> 
         <Route exact path={"/blog"} component={Blogs}/> 
         <Route exact path={"(/)?"} component={Home} />
       </Switch>

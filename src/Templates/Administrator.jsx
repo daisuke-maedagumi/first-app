@@ -1,4 +1,4 @@
-import React,{useState,useCallback} from 'react'
+import React,{useState,useCallback,useEffect} from 'react'
 import {TextInput,SelectBox,PrimaryButton} from '../components/uiKid/index'
 import {makeStyles} from '@material-ui/styles'
 import { useDispatch } from 'react-redux'
@@ -30,6 +30,7 @@ const useStyles = makeStyles({
 const Administrator = () => {
   const dispatch = useDispatch()
   const classes = useStyles()
+
   const [title, setTitle]= useState('')
   const [text, setText] = useState('')
   const [member, setMember] = useState('')
@@ -44,13 +45,15 @@ const Administrator = () => {
   },[setText])
 
   const members = [
-    {id: 'member1', name: 'Daisuke Ninomiya'},
-    {id: 'member2', name: 'Osamu Yamaguchi'},
-    {id: 'member3', name: 'Kyohei Yamamoto'},
-    {id: 'member4', name: 'Shovon Rahman Shuvo'},
-    {id: 'member5', name: 'Shintaro Yamamoto'},
-    {id: 'member6', name: 'Shota Nakashima'}
+    {id: 'Daisuke Ninomiya', name: 'Daisuke Ninomiya'},
+    {id: 'Osamu Yamaguchi', name: 'Osamu Yamaguchi'},
+    {id: 'Kyohei Yamamoto', name: 'Kyohei Yamamoto'},
+    {id: 'Shovon Rahman Shuvo', name: 'Shovon Rahman Shuvo'},
+    {id: 'Shintaro Yamamoto', name: 'Shintaro Yamamoto'},
+    {id: 'Shota Nakashima', name: 'Shota Nakashima'}
+
   ]
+
   return (
     <section className={classes.sections}>
       <h1 className={classes.textHeadLine}>Administrator Pages</h1>
