@@ -6,3 +6,11 @@ export const fetchBlogsAction = (blogs) => {
     payload: blogs
   }
 }
+export const DELETE_BLOG = 'DELETE_BLOG'
+
+export const deleteBlogAction = (blogs) => {
+  return {
+    type: "DELETE_BLOG",
+    payload: blogs
+  }
+}

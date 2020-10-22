@@ -1,9 +1,17 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import NoImage from '../../assets/images/no_image.png'
+import {push} from 'connected-react-router'
+import {useDispatch} from 'react-redux'
+import EditAttributesIcon from '@material-ui/icons/EditAttributes';
+import IconButton from '@material-ui/core/IconButton'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import {deleteBlog} from '../../reducks/blogs/operations'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,10 +46,21 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogItem = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch()
+  const [anchorEl, setAnchorEl] = useState(null)
+  const images = (props.images.length > 0) ? props.images : [{path: NoImage}]
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
   return (
     <Card className={classes.root}>
       <div className={classes.details}>
-        <CardContent className={classes.content}>
+        <CardContent className={classes.content} onClick={() => dispatch(push('/blog/' + props.id))}>
           <Typography component="h5" variant="h5">
             {props.title}
           </Typography>
@@ -50,12 +69,38 @@ const BlogItem = (props) => {
           </Typography>
         </CardContent>
         <div className={classes.controls}>
+          <IconButton onClick={handleClick}>
+            <EditAttributesIcon/>
+          </IconButton>
+          <Menu
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+          >
+            <MenuItem
+            onClick={() => {
+              dispatch(push('/Administrator/edit/' + props.id))
+              handleClose()
+            }}
+            >
+              EDIT
+            </MenuItem>
+            <MenuItem
+            onClick={() => {
+              dispatch(deleteBlog(props.id))
+            }}>
+              DELETE
+            </MenuItem>
+          </Menu>
         </div>
       </div>
       <CardMedia
+        onClick={() => dispatch(push('/blog/' + props.id))}
         className={classes.cover}
-        image= {props.images[0].path}
+        image= {images[0].path}
       />
+      
     </Card>
   )
 }
