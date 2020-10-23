@@ -6,6 +6,7 @@ import {db} from '../firebase/index'
 import { push } from 'connected-react-router'
 import TextArea from '../components/Blogs/TextArea'
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   sections: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
   container: {
     margin: '0 auto',
-    maxWidth: '400px',
+    maxWidth: '700px',
     padding: '1rem',
     height: 'auto',
     width: 'calc(100% - 2rem)'
@@ -28,6 +29,12 @@ const useStyles = makeStyles({
   textHead: {
     margin: '0 auto 1rem auto',
     textAlign: 'center'
+  },
+  BackBotton: {
+    textAlign: 'center'
+  },
+  Writer: {
+    textAlign: 'right'
   }
 })
 
@@ -77,9 +84,13 @@ const BlogsDetails = () => {
       <div className={classes.container}>
       <Detailimag images={images} setImages={setImages}/>
       <TextArea text={text}/>
-        <p>{'ライター'  + member}</p>
-        <p onClick={() => dispatch(push('/blog'))}>Back</p>
-      </div>
+    <div className={classes.Writer}>
+      <Typography variant="subtitle1" color="textSecondary">{'Writer　'  + member}</Typography>  
+    </div>
+    <div className={classes.BackBotton}>
+        <Button  size="small" color="primary" onClick={() => dispatch(push('/blog'))}>Back</Button>
+    </div>
+</div>
     </section>
   )
 }
