@@ -16,7 +16,7 @@ import {deleteBlog} from '../../reducks/blogs/operations'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: 'flex', 
   },
   details: {
     display: 'flex',
@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     height: 38,
     width: 38,
   },
+  items: {
+    marginBottom: '20px'
+  }
 }));
 
 
@@ -58,50 +61,52 @@ const BlogItem = (props) => {
     setAnchorEl(null)
   }
   return (
-    <Card className={classes.root}>
-      <div className={classes.details}>
-        <CardContent className={classes.content} onClick={() => dispatch(push('/blog/' + props.id))}>
-          <Typography component="h5" variant="h5">
-            {props.title}
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            {props.member}
-          </Typography>
-        </CardContent>
-        <div className={classes.controls}>
-          <IconButton onClick={handleClick}>
-            <EditAttributesIcon/>
-          </IconButton>
-          <Menu
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-          >
-            <MenuItem
-            onClick={() => {
-              dispatch(push('/Administrator/edit/' + props.id))
-              handleClose()
-            }}
+    <div className={classes.items}>
+      <Card className={classes.root}>
+        <div className={classes.details}>
+          <CardContent className={classes.content} onClick={() => dispatch(push('/Blogs/detail/' + props.id))}>
+            <Typography component="h5" variant="h5">
+              {props.title}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {props.member}
+            </Typography>
+          </CardContent>
+          <div className={classes.controls}>
+            <IconButton onClick={handleClick}>
+              <EditAttributesIcon/>
+            </IconButton>
+            <Menu
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
             >
-              EDIT
-            </MenuItem>
-            <MenuItem
-            onClick={() => {
-              dispatch(deleteBlog(props.id))
-            }}>
-              DELETE
-            </MenuItem>
-          </Menu>
+              <MenuItem
+              onClick={() => {
+                dispatch(push('/Administrator/edit/' + props.id))
+                handleClose()
+              }}
+              >
+                EDIT
+              </MenuItem>
+              <MenuItem
+              onClick={() => {
+                dispatch(deleteBlog(props.id))
+              }}>
+                DELETE
+              </MenuItem>
+            </Menu>
+          </div>
         </div>
-      </div>
-      <CardMedia
-        onClick={() => dispatch(push('/blog/' + props.id))}
-        className={classes.cover}
-        image= {images[0].path}
-      />
-      
-    </Card>
+        <CardMedia
+          onClick={() => dispatch(push('/Blogs/detail/' + props.id))}
+          className={classes.cover}
+          image= {images[0].path}
+        />
+        
+      </Card>
+    </div>
   )
 }
 

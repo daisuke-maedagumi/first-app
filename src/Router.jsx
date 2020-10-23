@@ -1,6 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router'
-import {Home,Member1,Member2,Member3,Member4,Member5,Member6,Blogs,Administrator,AdministratorEdit} from './Templates/index'
+import {Home,Member1,Member2,Member3,Member4,Member5,Member6,Blogs,Administrator,AdministratorEdit,BlogsDetails} from './Templates/index'
 
 const Router = (props) => {
   
@@ -18,6 +18,7 @@ const Router = (props) => {
         <Route path={"/Administrator"} component={Administrator}/> 
         <Route exact path={"/blog"} component={Blogs}/> 
         <Route exact path={"(/)?"} component={Home} />
+        <Route path={"/Blogs/detail(/:id)?"} component={BlogsDetails}/> 
       </Switch>
     </div>
   )
