@@ -47,11 +47,22 @@ const useStyles = makeStyles((theme) => ({
 
 
 
+
 const BlogItem = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = useState(null)
   const images = (props.images.length > 0) ? props.images : [{path: NoImage}]
+
+  const datetimeToString = (date) => {
+    return date.getFullYear() + '/'
+      + ('00' + (date.getMonth()+1)).slice(-2) + '/'
+      + ('00' + date.getDate()).slice(-2) + '　'
+      + ('00' + date.getHours()).slice(-2) + ':'
+      + ('00' + date.getMinutes()).slice(-2) 
+  }
+  const orderedDatetime = datetimeToString(props.createdAt)
+
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget)
@@ -97,6 +108,9 @@ const BlogItem = (props) => {
                 DELETE
               </MenuItem>
             </Menu>
+            <Typography variant="subtitle1" color="textSecondary">
+            {orderedDatetime}
+            </Typography>
           </div>
         </div>
         <CardMedia

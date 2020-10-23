@@ -36,6 +36,7 @@ const Blogs = () => {
             images={blog.images}
             title={blog.title}
             member={blog.member}
+            createdAt={(blog.created_at.toDate())}
             />
           
           ))      
