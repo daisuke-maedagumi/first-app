@@ -103,6 +103,30 @@
   height: auto;
 }
 
+.p-media__think {
+  position: relative;
+  overflow: hidden;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.p-media__think::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.p-media__think > img {
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
 /*********** Footer ***********/
 .l-footer {
   display: flex;
