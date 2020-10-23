@@ -38,10 +38,8 @@ const AdministratorEdit = () => {
   const classes = useStyles()
 
   let id = window.location.pathname.split('/Administrator/edit')[1]
-  console.log(id);
   if(id !== "") {
     id = id.split("/")[1]
-    console.log(id);
   }
 
   const [title, setTitle]= useState('')
