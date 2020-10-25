@@ -9,3 +9,5 @@ export {default as Administrator} from './Administrator'
 export {default as Blogs} from './Blogs'
 export {default as Login} from './Login'
 export {default as Homes} from './Homes'
+export {default as SignUp} from './SignUp'
+

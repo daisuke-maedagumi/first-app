@@ -8,6 +8,7 @@ import './assets/styles/index.css';
 import './assets/styles/textStyles.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import "./assets/styles/reset.css"
 
 const history = History.createBrowserHistory()
 export const store = createStore(history)

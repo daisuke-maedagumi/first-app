@@ -163,6 +163,13 @@
   .c-section-wrapin {
       max-width: 1024px;
   }
+  .c-section-container {
+      margin: 0 auto;
+      max-width: 400px;
+      padding: 1rem;
+      height: auto;
+      width: calc(100% - 2rem);
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -171,3 +178,5 @@
       height: 48px
   }
 }
+
+

@@ -1,8 +1,18 @@
 import React from 'react'
+import {getUserId, getUserName} from "../reducks/users/selectors"
+import {useSelector} from "react-redux"
 
 const Homes = () => {
+    const selector = useSelector(state => state);
+    const uid = getUserId(selector)
+    const userName = getUserName(selector)
     return(
-        <h2>Homes</h2>
+        <div>
+            <h2>Homes</h2>
+            <p>ユーザーID：{uid}</p>
+            <p>ユーザー名：{userName}</p>
+        </div>
+        
     )
 }
 
