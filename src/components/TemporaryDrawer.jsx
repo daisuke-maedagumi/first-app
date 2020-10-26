@@ -65,7 +65,7 @@ const TemporaryDrawer = (props) => {
 
   const contents = [
     {func: selectContents,label: "Blog", icon: <CreateIcon/>, id: "Blog", value: "/blog"},
-    {func: selectContents,label: "Administrator only", icon: <FingerprintIcon/>, id: "Administrator", value: "/administrator"}
+    {func: selectContents,label: "Administrator only", icon: <FingerprintIcon/>, id: "Administrator", value: "/signin"}
   ]
 
   return (
