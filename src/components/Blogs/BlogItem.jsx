@@ -6,12 +6,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import NoImage from '../../assets/images/no_image.png'
 import {push} from 'connected-react-router'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import EditAttributesIcon from '@material-ui/icons/EditAttributes';
 import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import {deleteBlog} from '../../reducks/blogs/operations'
+import {getSignedIn} from '../../reducks/users/selectors'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
   },
   items: {
     marginBottom: '20px'
+  },
+  center: {
+    textAlign: 'center'
   }
 }));
 
@@ -51,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
 const BlogItem = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch()
+  const selector = useSelector((state) => state)
+  const signIn = getSignedIn(selector)
   const [anchorEl, setAnchorEl] = useState(null)
   const images = (props.images.length > 0) ? props.images : [{path: NoImage}]
 
@@ -83,16 +89,19 @@ const BlogItem = (props) => {
               {props.member}
             </Typography>
           </CardContent>
+          {(signIn) ?
           <div className={classes.controls}>
             <IconButton onClick={handleClick}>
               <EditAttributesIcon/>
             </IconButton>
+            
             <Menu
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
             >
+              
               <MenuItem
               onClick={() => {
                 dispatch(push('/Administrator/edit/' + props.id))
@@ -109,9 +118,14 @@ const BlogItem = (props) => {
               </MenuItem>
             </Menu>
             <Typography variant="subtitle1" color="textSecondary">
-            {orderedDatetime}
+              {orderedDatetime}
             </Typography>
-          </div>
+          </div> :
+          <div className={classes.center}>
+            <Typography variant="subtitle1" color="textSecondary">
+              {orderedDatetime}
+            </Typography>
+          </div>}
         </div>
         <CardMedia
           onClick={() => dispatch(push('/Blogs/detail/' + props.id))}
