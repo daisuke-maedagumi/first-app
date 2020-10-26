@@ -2,10 +2,12 @@ const initialState = {
   blogs: {
     list: []
   },
-  members: {
+  users: {
     isSignedIn: false,
-    memberName: ''
+    role: "",
+    uid: "",
+    userName: ''
   }
-}
+};
 
 export default initialState

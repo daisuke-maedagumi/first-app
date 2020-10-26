@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import createStore from './reducks/store/store'
+import {Provider} from 'react-redux';
+import createStore from './reducks/store/store';
 import {ConnectedRouter} from 'connected-react-router'
 import * as History from 'history'
 import './assets/styles/index.css';
 import './assets/styles/textStyles.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import "./assets/styles/reset.css"
 
 const history = History.createBrowserHistory()
 export const store = createStore(history)
