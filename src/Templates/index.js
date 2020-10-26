@@ -10,4 +10,5 @@ export {default as Blogs} from './Blogs'
 export {default as Login} from './Login'
 export {default as Homes} from './Homes'
 export {default as SignUp} from './SignUp'
+export {default as SignIn} from './SignIn'
 

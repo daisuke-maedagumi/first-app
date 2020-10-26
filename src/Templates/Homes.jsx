@@ -8,6 +8,8 @@ const Homes = () => {
     const userName = getUserName(selector)
     return(
         <div>
+            <div className="module-spacer--medium" />
+            <div className="module-spacer--medium" />
             <h2>Homes</h2>
             <p>ユーザーID：{uid}</p>
             <p>ユーザー名：{userName}</p>

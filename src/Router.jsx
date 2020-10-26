@@ -1,6 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router'
-import {Home,Member1,Member2,Member3,Member4,Member5,Member6,Blogs,Administrator,Homes,Login,SignUp} from './Templates/index'
+import {Home,Member1,Member2,Member3,Member4,Member5,Member6,Blogs,Administrator,Homes,SignUp, SignIn} from './Templates/index'
 
 
 const Router = (props) => {
@@ -8,7 +8,8 @@ const Router = (props) => {
   return (
     <div>
       <Switch>
-        <Route exact path={"/signup"} component={SignUp} />
+        <Route exact path={'/signup'} component={SignUp} />
+        <Route exact path={"/signin"} component={SignIn} />
         <Route exact path={"/Member1"} component={Member1} />
         <Route exact path={"/Member2"} component={Member2} />
         <Route exact path={"/Member3"} component={Member3} />
@@ -18,7 +19,6 @@ const Router = (props) => {
         <Route exact path={"/Administrator"} component={Administrator}/> 
         <Route exact path={"/blog"} component={Blogs}/> 
         <Route exact path={"(/)?"} component={Home} />
-        <Route exact path={"/login"} component={Login} />
         <Route exact path={"/homes"} component={Homes} />
       </Switch>
     </div>
