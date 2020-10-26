@@ -1,10 +1,10 @@
-import React,{useState,useCallback} from 'react'
+import React,{useState,useCallback,useEffect} from 'react'
 import {TextInput,SelectBox,PrimaryButton} from '../components/uiKid/index'
 import {makeStyles} from '@material-ui/styles'
 import { useDispatch } from 'react-redux'
-import {saveBlogs} from '../reducks/blogs/operations'
+import {saveEditBlogs} from '../reducks/blogs/operations'
 import ImageArea from '../components/Blogs/ImageArea'
-
+import {db} from '../firebase/index'
 
 
 const useStyles = makeStyles({
@@ -33,9 +33,14 @@ const useStyles = makeStyles({
   }
 })
 
-const Administrator = () => {
+const AdministratorEdit = () => {
   const dispatch = useDispatch()
   const classes = useStyles()
+
+  let id = window.location.pathname.split('/Administrator/edit')[1]
+  if(id !== "") {
+    id = id.split("/")[1]
+  }
 
   const [title, setTitle]= useState('')
   const [text, setText] = useState('')
@@ -60,11 +65,23 @@ const Administrator = () => {
 
   ]
 
+  useEffect(() => {
+    if (id !== "") {
+      db.collection('blogs').doc(id).get()
+        .then(snapshot => {
+          const data = snapshot.data()
+          setTitle(data.title)
+          setText(data.text)
+          setMember(data.member)
+          setImages(data.images)
+        })
+    }
+  },[id])
 
   return (
     <section className={classes.sections}>
       <h1 className={classes.textHeadLine}>Administrator Pages</h1>
-      <h2 className={classes.textHead}>Create a NewPost</h2>
+      <h2 className={classes.textHead}>Edit a Post</h2>
       <div className={classes.container}>
         <ImageArea images={images} setImages={setImages}/>
         <TextInput
@@ -82,11 +99,11 @@ const Administrator = () => {
         <div>
           <PrimaryButton
           label={'Post a blog'}
-          onClick={() => dispatch(saveBlogs(title,text,member,images))}/>
+          onClick={() => dispatch(saveEditBlogs(id,title,text,member,images))}/>
         </div>
       </div>
     </section>
   )
 }
 
-export default Administrator
+export default AdministratorEdit

@@ -1,6 +1,6 @@
 const initialState = {
   blogs: {
-    blogList: []
+    list: []
   },
   users: {
     isSignedIn: false,

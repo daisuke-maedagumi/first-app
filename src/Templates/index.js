@@ -11,4 +11,5 @@ export {default as Login} from './Login'
 export {default as Homes} from './Homes'
 export {default as SignUp} from './SignUp'
 export {default as SignIn} from './SignIn'
-
+export {default as AdministratorEdit} from './AdministratorEdit'
+export {default as BlogsDetails} from './BlogsDetails'
