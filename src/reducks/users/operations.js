@@ -1,4 +1,4 @@
-import {signInAction} from "./actions"
+import {signInAction, signOutAction} from "./actions"
 import {push} from "connected-react-router"
 import {auth, db, FirebaseTimestamp} from '../../firebase/index'
 
@@ -16,7 +16,7 @@ export const listenAuthState = () => {
                             uid: uid,
                             userName: data.userName
                         }))
-                        // dispatch(push('/Administrator'))
+                        dispatch(push('/Administrator'))
                     })
             } else {
                 dispatch(push('/'))
@@ -37,11 +37,10 @@ export const signIn = (email, password) => {
 
                 if (user) {
                     const uid = user.uid
-
                     db.collection('users').doc(uid).get()
                         .then(snapshot => {
+                            alert("サインインしました")
                             const data = snapshot.data()
-
                             dispatch(signInAction({
                                 isSignedIn: true,
                                 role: data.role,
@@ -49,7 +48,7 @@ export const signIn = (email, password) => {
                                 userName: data.userName
                             }))
 
-                            dispatch(push('/Administrator'))
+                            dispatch(push('/'))
                         })
                 }
             })
@@ -95,5 +94,16 @@ export const signUp = (userName, email, password, confirmPassword) => {
                     }
                 }
             })
+    }
+}
+
+export const signOut = () => {
+    return async (dispatch) => {
+        auth.signOut()
+        .then(() => {
+            alert("サインアウトしました")
+            dispatch(signOutAction());
+            dispatch(push('/'))
+        })
     }
 }

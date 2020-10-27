@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { listenAuthState } from './reducks/users/operations';
 import { getSignedIn } from './reducks/users/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { Home } from './Templates';
+// import { Home } from './Templates';
 
 const Auth = ({children}) => {
     const dispatch = useDispatch();
