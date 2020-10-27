@@ -8,10 +8,15 @@ import ListItemText from '@material-ui/core/ListItemText'
 import {makeStyles} from '@material-ui/styles'
 import HomeIcon from '@material-ui/icons/Home';
 import PersonPinTwoToneIcon from '@material-ui/icons/PersonPinTwoTone';
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {push} from 'connected-react-router'
 import CreateIcon from '@material-ui/icons/Create';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
+import { signOut } from '../reducks/users/operations'
+import {getSignedIn} from '../reducks/users/selectors'
+import InputIcon from '@material-ui/icons/Input';
+import LogInText from './LogInText'
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -42,6 +47,11 @@ const TemporaryDrawer = (props) => {
   const classes = useStyles()
   const {container} = props
   const dispatch = useDispatch()
+  const selector = useSelector((state) => state)
+  const signIn = getSignedIn(selector)
+  
+ 
+  
 
   const selectMenu = (event, path) => {
     dispatch(push(path))
@@ -65,8 +75,10 @@ const TemporaryDrawer = (props) => {
 
   const contents = [
     {func: selectContents,label: "Blog", icon: <CreateIcon/>, id: "Blog", value: "/blog"},
-    {func: selectContents,label: "Administrator only", icon: <FingerprintIcon/>, id: "Administrator", value: "/signin"}
+    // {func: selectContents,label: "Administrator only", icon: <FingerprintIcon/>, id: "Administrator", value: "/signin"}
   ]
+
+  
 
   return (
     <nav className={classes.drawer}>
@@ -103,6 +115,13 @@ const TemporaryDrawer = (props) => {
               </ListItem>
             ))}
           </List>
+          
+          {(signIn) ?
+          <>
+            <LogInText icon={<FingerprintIcon/>} signin={"Administrator"}  onClick={() => dispatch(push('/Administrator'))}/>
+            <LogInText icon={<MeetingRoomIcon/>} signin={"signout"}  onClick={() => dispatch(signOut())}/>
+          </>:
+          <LogInText icon={<InputIcon/>} signin={"signin"}  onClick={() => dispatch(push('/signin'))}/>}
         </div>
       </Drawer>
     </nav>
