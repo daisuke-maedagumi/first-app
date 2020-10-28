@@ -11,6 +11,7 @@ import ContactSupportOutlinedIcon from '@material-ui/icons/ContactSupportOutline
 import {ChatBotModal} from './Chatbot/index'
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import MailModal from './MailModal'
+import LogoImage from '../assets/images/enggineers_logp01-01.png'
 
 
 
@@ -42,6 +43,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '100%',
     border: 'solid 1px orange'
+  },
+  img: {
+    margin: "auto",
+    display: "block",
+    maxWidth: "100%",
+    maxHeight: "50%",
+    width: 90,
+    height: 35,
   },
   root: {
     width: '100vw',
@@ -87,7 +96,7 @@ const Navber = (props) => {
       <AppBar className={classes.BarColor} >
         <ToolBar >
           <Typography className={classes.linkTitle}>
-            <Link to='/' className={classes.linkName} >Team Engineers</Link>
+            <Link to='/' className={classes.linkName} ><img src={LogoImage} className={classes.img}/></Link>
           </Typography>
           <IconButton edge="start" className={classes.menuIcon} onClick={(event) => handleDrawerToglge(event)}>
             <MenuBookIcon className={classes.icon}/>

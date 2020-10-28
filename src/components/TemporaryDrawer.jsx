@@ -118,10 +118,10 @@ const TemporaryDrawer = (props) => {
           
           {(signIn) ?
           <>
-            <LogInText icon={<FingerprintIcon/>} signin={"Administrator"}  onClick={() => dispatch(push('/Administrator'))}/>
+            <LogInText icon={<FingerprintIcon/>} signin={"Blog post"}  onClick={() => dispatch(push('/Administrator'))}/>
             <LogInText icon={<MeetingRoomIcon/>} signin={"signout"}  onClick={() => dispatch(signOut())}/>
           </>:
-          <LogInText icon={<InputIcon/>} signin={"signin"}  onClick={() => dispatch(push('/signin'))}/>}
+          <LogInText icon={<InputIcon/>} signin={"管理者専用ページ"}  onClick={() => dispatch(push('/signin'))}/>}
         </div>
       </Drawer>
     </nav>

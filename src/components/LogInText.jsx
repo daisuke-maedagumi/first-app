@@ -1,6 +1,5 @@
 import React from 'react'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
-import PersonPinTwoToneIcon from '@material-ui/icons/PersonPinTwoTone';
 import ListItemText from '@material-ui/core/ListItemText'
 import {makeStyles} from '@material-ui/styles'
 import ListItem from '@material-ui/core/ListItem'

@@ -24,7 +24,7 @@ const SignIn = () => {
         <div className="c-section-container">
             <div className="module-spacer--medium" />
             <div className="module-spacer--medium" />
-            <h2 className="u-text__headline u-text-center">サインイン</h2>
+            <h2 className="u-text__headline u-text-center">管理者以外ログインお断り</h2>
             <div className="module-spacer--medium" />
             <TextInput 
                 fullWidth={true} label={"メールアドレス"} multiline={false} required={true}
